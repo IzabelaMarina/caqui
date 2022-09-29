@@ -13,7 +13,7 @@ Atualmente não há nenhuma funcionalidade implementada no site além de mensage
 
 ## Passos Iniciais
 Para rodar esse projeto no seu computador:
-1.  Inicialize um ambiente virtual em Python.
+1.  Inicialize um [ambiente virtual](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment) em Python.
 2.  Rode os comandos (se estiver no Windows você deve usar  ```py ``` ou ```py-3``` em vez de ```python3``` para iniciar o Python):
 ```
 pip3 install -r requirements.txt
