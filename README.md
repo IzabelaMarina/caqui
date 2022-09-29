@@ -1,4 +1,4 @@
-##Caqui: Monitoramento de Voos
+## Caqui: Monitoramento de Voos
 Website para sistema de monitoramento de status de voos escrito em Django.
 
 Projeto da disciplina PCS3643 - Laboratório de Engenharia de Software I de 2022 da Escola Politécnica da USP desenvolvido por:
@@ -6,12 +6,12 @@ Projeto da disciplina PCS3643 - Laboratório de Engenharia de Software I de 2022
   * Lucas Carvalho Ramos - 10693382
   * Nícolas Varela Auler - 11819900
 
-##Visão Geral
+## Visão Geral
 Essa aplicação implementa um sistema de monitoramento de vôos, com controle de segurança baseado em logins e permissões de usuários e atualização de status baseada em inputs dos administradores.
 
 Atualmente não há nenhuma funcionalidade implementada no site além de mensagens padrões nas páginas iniciais.
 
-##Passos Iniciais
+## Passos Iniciais
 Para rodar esse projeto no seu computador:
 1.  Inicialize um ambiente virtual em Python.
 2.  Rode os comandos (se estiver no Windows você deve usar  ```py ``` ou ```py-3``` em vez de ```python3``` para iniciar o Python):
