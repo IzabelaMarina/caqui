@@ -17,9 +17,6 @@ Para rodar esse projeto no seu computador:
 2.  Rode os comandos (se estiver no Windows você deve usar  ```py ``` ou ```py-3``` em vez de ```python3``` para iniciar o Python):
 ```
 pip3 install -r requirements.txt
-python3 manage.py makemigrations
-python3 manage.py migrate
-python3 manage.py createsuperuser
 python3 manage.py runserver
 ```
 3. Abra a url ```http://127.0.0.1:8000/admin/ ``` em um navegador da sua preferência para abrir a tela de admnistração.
