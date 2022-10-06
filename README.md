@@ -9,7 +9,8 @@ Projeto da disciplina PCS3643 - Laboratório de Engenharia de Software I de 2022
 ## Visão Geral
 Essa aplicação implementa um sistema de monitoramento de vôos, com controle de segurança baseado em logins e permissões de usuários e atualização de status baseada em inputs dos administradores.
 
-Atualmente não há nenhuma funcionalidade implementada no site além de mensagens padrões nas páginas iniciais.
+Atualmente as únicas visualizações possíveis no site são as mensagens padrões nas páginas "home", "flight" e "report".
+Existem três tabelas (Flights, FlightStatus e Users) no banco de dados do sistema que podem ser testadas utilizando os testes automatizados do projeto.
 
 ## Passos Iniciais
 Para rodar esse projeto no seu computador:
@@ -17,9 +18,18 @@ Para rodar esse projeto no seu computador:
 2.  Rode os comandos (se estiver no Windows você deve usar  ```py``` ou ```py-3``` em vez de ```python3``` para iniciar o Python):
 ```
 pip3 install -r requirements.txt
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+3. Para rodar os testes use:
+```
+python3 manage.py test
+```
+5. Para rodar o site use:
+```
 python3 manage.py runserver
 ```
-3. Abra a url ```http://127.0.0.1:8000/admin/``` em um navegador da sua preferência para abrir a tela de admnistração.
-4. Abra a url ```http://127.0.0.1:8000``` para abrir a página inicial.
-5. Abra a url ```http://127.0.0.1:8000/flight``` para abrir a página de gerenciamento de voos.
-6. Abra a url ```http://127.0.0.1:8000/report``` para abrir a página de geração de relatórios.
+6. Abra a url ```http://127.0.0.1:8000/admin/``` em um navegador da sua preferência para abrir a tela de admnistração.
+7. Abra a url ```http://127.0.0.1:8000``` para abrir a página inicial.
+8. Abra a url ```http://127.0.0.1:8000/flight``` para abrir a página de gerenciamento de voos.
+9. Abra a url ```http://127.0.0.1:8000/report``` para abrir a página de geração de relatórios.
