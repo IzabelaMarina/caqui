@@ -14,12 +14,12 @@ Atualmente não há nenhuma funcionalidade implementada no site além de mensage
 ## Passos Iniciais
 Para rodar esse projeto no seu computador:
 1.  Inicialize um [ambiente virtual](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment) em Python.
-2.  Rode os comandos (se estiver no Windows você deve usar  ```py ``` ou ```py-3``` em vez de ```python3``` para iniciar o Python):
+2.  Rode os comandos (se estiver no Windows você deve usar  ```py``` ou ```py-3``` em vez de ```python3``` para iniciar o Python):
 ```
 pip3 install -r requirements.txt
 python3 manage.py runserver
 ```
-3. Abra a url ```http://127.0.0.1:8000/admin/ ``` em um navegador da sua preferência para abrir a tela de admnistração.
-4. Abra a url ```http://127.0.0.1:8000 ``` para abrir a página inicial.
+3. Abra a url ```http://127.0.0.1:8000/admin/``` em um navegador da sua preferência para abrir a tela de admnistração.
+4. Abra a url ```http://127.0.0.1:8000``` para abrir a página inicial.
 5. Abra a url ```http://127.0.0.1:8000/flight``` para abrir a página de gerenciamento de voos.
 6. Abra a url ```http://127.0.0.1:8000/report``` para abrir a página de geração de relatórios.
