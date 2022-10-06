@@ -10,8 +10,10 @@ Projeto da disciplina PCS3643 - Laboratório de Engenharia de Software I de 2022
 Essa aplicação implementa um sistema de monitoramento de vôos, com controle de segurança baseado em logins e permissões de usuários e atualização de status baseada em inputs dos administradores.
 
 Atualmente as únicas visualizações possíveis no site são as mensagens padrões nas páginas "home", "flight" e "report".
+
 Existem três tabelas (Flights, FlightStatus e Users) no banco de dados do sistema que podem ser testadas utilizando os testes automatizados do projeto.
-A tabela de usuários serve para o controle de segurança na mudança de status de voos, a tabela de voos mantém informações informações estáticas dos voos e a tabela de status contém as informações que são atualizadas constantemente durante o processo de partida-chegada de um voo.
+
+A tabela de usuários serve para o controle de segurança na mudança de status de voos, a tabela de voos mantém informações estáticas dos voos e a tabela de status contém as informações que são atualizadas constantemente durante o processo de partida-chegada de um voo, além de metadata.
 
 ![UML](LabEngSoftClassDiag.drawio.png)
 
