@@ -9,9 +9,9 @@ Projeto da disciplina PCS3643 - Laboratório de Engenharia de Software I de 2022
 ## Visão Geral
 Essa aplicação implementa um sistema de monitoramento de voos, com controle de segurança baseado em logins e permissões de usuários e atualização de status baseada em inputs dos administradores.
 
-Existem três tabelas (Flights, FlightStatus e Users) no banco de dados do sistema que podem ser testadas utilizando os testes automatizados do projeto.
+Existem duas tabelas (Flights, FlightStatus) no banco de dados do sistema que podem ser testadas utilizando os testes automatizados do projeto.
 
-A tabela de usuários serve para o controle de segurança na mudança de status de voos, a tabela de voos mantém informações estáticas dos voos e a tabela de status contém as informações que são atualizadas constantemente durante o processo de partida-chegada de um voo, além de metadata.
+A tabela de voos mantém informações estáticas dos voos e a tabela de status contém as informações que são atualizadas constantemente durante o processo de partida-chegada de um voo, além de metadata.
 
 Diagrama de Entidade e Relacionamento do Banco de Dados:
 
@@ -42,5 +42,7 @@ python3 manage.py runserver
 ```
 6. Abra a url ```http://127.0.0.1:8000/admin/``` em um navegador da sua preferência para abrir a tela de admnistração.
 7. Abra a url ```http://127.0.0.1:8000``` para abrir a página inicial (login).
-8. Abra a url ```http://127.0.0.1:8000/flight``` para abrir a página de gerenciamento de voos.
+8. Abra a url ```http://127.0.0.1:8000/home``` para abrir a página de monitoração de voos.
 9. Abra a url ```http://127.0.0.1:8000/report``` para abrir a página de geração de relatórios.
+10. Abra a url ```http://127.0.0.1:8000/crud``` para abrir a página de gerenciamento de dados de voo.
+11. Abra a url ```http://127.0.0.1:8000/update``` para abrir a página de atualização de status.
