@@ -15,7 +15,10 @@ Existem três tabelas (Flights, FlightStatus e Users) no banco de dados do siste
 
 A tabela de usuários serve para o controle de segurança na mudança de status de voos, a tabela de voos mantém informações estáticas dos voos e a tabela de status contém as informações que são atualizadas constantemente durante o processo de partida-chegada de um voo, além de metadata.
 
+Diagrama de Entidade e Relacionamento do Banco de Dados:
 ![UML](LabEngSoftClassDiag.drawio.png)
+
+Modelo de Navegação do site:
 
 ## Passos Iniciais
 Para rodar esse projeto no seu computador:
