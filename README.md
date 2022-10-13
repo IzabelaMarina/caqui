@@ -7,15 +7,21 @@ Projeto da disciplina PCS3643 - Laboratório de Engenharia de Software I de 2022
   * Nícolas Varela Auler - 11819900
 
 ## Visão Geral
-Essa aplicação implementa um sistema de monitoramento de vôos, com controle de segurança baseado em logins e permissões de usuários e atualização de status baseada em inputs dos administradores.
-
-Atualmente as únicas visualizações possíveis no site são as mensagens padrões nas páginas "home", "flight" e "report".
+Essa aplicação implementa um sistema de monitoramento de voos, com controle de segurança baseado em logins e permissões de usuários e atualização de status baseada em inputs dos administradores.
 
 Existem três tabelas (Flights, FlightStatus e Users) no banco de dados do sistema que podem ser testadas utilizando os testes automatizados do projeto.
 
 A tabela de usuários serve para o controle de segurança na mudança de status de voos, a tabela de voos mantém informações estáticas dos voos e a tabela de status contém as informações que são atualizadas constantemente durante o processo de partida-chegada de um voo, além de metadata.
 
+Diagrama de Entidade e Relacionamento do Banco de Dados:
+
 ![UML](LabEngSoftClassDiag.drawio.png)
+
+As telas de login, home (monitoração de voos), consulta à tabela de voos, atualização de status e relatórios já existem e estão devidamente linkadas. As telas não necessariamente estão cumprindo seu papel no sistema até o momento.
+
+Modelo de Navegação do site:
+
+![UML](InterfacesLabEngSoft.drawio.png)
 
 ## Passos Iniciais
 Para rodar esse projeto no seu computador:
@@ -35,6 +41,6 @@ python3 manage.py test
 python3 manage.py runserver
 ```
 6. Abra a url ```http://127.0.0.1:8000/admin/``` em um navegador da sua preferência para abrir a tela de admnistração.
-7. Abra a url ```http://127.0.0.1:8000``` para abrir a página inicial.
+7. Abra a url ```http://127.0.0.1:8000``` para abrir a página inicial (login).
 8. Abra a url ```http://127.0.0.1:8000/flight``` para abrir a página de gerenciamento de voos.
 9. Abra a url ```http://127.0.0.1:8000/report``` para abrir a página de geração de relatórios.
