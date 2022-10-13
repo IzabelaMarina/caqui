@@ -1,33 +1,163 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Monitoramento de Voos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/black-dashboard.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"> -->
+    <script src="{% static 'js/black-dashboard.min.js' %}"></script>
+    <title>Caqui</title>
 </head>
+
 <body>
 
-<h1>Current Active Flights</h1>
-<p>Departures</p>
-
-<table>
-    <tr>
-      <th>Flight</th>
-      <th>Status</th>
-      <th>Sched Dep</th>
-      <th>Destination</th>
-    </tr>
-    <tr>
-      <td>GOL2545</td>
-      <td>On Schedule</td>
-      <td>14:25</td>
-      <td>Germany</td>
-    </tr>
-    <tr>
-      <td>TAM2345</td>
-      <td>Delayed</td>
-      <td>19:34</td>
-      <td>Mexico</td>
-    </tr>
-  </table> 
-
-</body>
-</html>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="home">Monitoring</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <!-- <li class="nav-item active">
+                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="update">Update flights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="crud">CRUD flights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="report">Flight Reports</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/" class="btn btn-primary">Exit</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="col-lg-6 col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> Departures</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter " id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>
+                    Flight Code
+                  </th>
+                  <th>
+                    Destination
+                  </th>
+                  <th>
+                    Flight Status
+                  </th>
+                  <th class="text-center">
+                    Est. Dep.
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    GOL6942
+                  </td>
+                  <td>
+                    BEL
+                  </td>
+                  <td>
+                    Embarque imediato
+                  </td>
+                  <td class="text-center">
+                    11:20
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    TAM4242
+                  </td>
+                  <td>
+                    BSB
+                  </td>
+                  <td>
+                    Embarque próximo
+                  </td>
+                  <td class="text-center">
+                    22:00
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <div class="col-lg-6 col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> Arrivals</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter " id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>
+                    Flight Code
+                  </th>
+                  <th>
+                    Origin
+                  </th>
+                  <th class="text-center">
+                    Est. Arrival.
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    GOL6942
+                  </td>
+                  <td>
+                    GRU
+                  </td>
+                  <td class="text-center">
+                    04:20
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    TAM4242
+                  </td>
+                  <td>
+                    SSA
+                  </td>
+                  <td class="text-center">
+                    22:00
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    
+    </body>
+    
+    </html>

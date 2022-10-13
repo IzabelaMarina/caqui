@@ -18,10 +18,13 @@ from django.urls import path
 from report import views as reportviews
 from flight_management import views as flightmanagementviews
 from flight_monitoring import views as flightmonitoringviews
+from login import views as loginviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('flight', flightmanagementviews.flightmanagementview),
+    path('crud', flightmanagementviews.flightmanagementview),
+    path('update', flightmanagementviews.flightupdateview),
     path('report', reportviews.reportview),
-    path('', flightmonitoringviews.flightmonitoringview), 
+    path('', loginviews.loginview),
+    path('home', flightmonitoringviews.flightmonitoringview),
 ]
