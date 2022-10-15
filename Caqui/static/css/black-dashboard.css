@@ -902,7 +902,8 @@ pre {
     max-width: 50%; }
   .col-lg-7 {
     flex: 0 0 58.33333%;
-    max-width: 58.33333%; }
+    max-width: 58.33333%;
+    min-width: 1000px; }
   .col-lg-8 {
     flex: 0 0 66.66667%;
     max-width: 66.66667%; }
@@ -11970,7 +11971,7 @@ table.tablesorter thead tr .headerSortDown {
   padding: .75rem;
   color: #393f49;
   background-color: #ffffff;
-  border-radius: 0.2857rem; }
+  border-radius: 0.2857rem;}
 
 .bd-docs .navbar .navbar-brand {
   position: relative; }
