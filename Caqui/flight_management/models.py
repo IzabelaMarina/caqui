@@ -1,6 +1,3 @@
-from asyncio.windows_events import NULL
-from secrets import choice
-from statistics import mode
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from flight_management.enums import AirportCodes, Status, Role  
