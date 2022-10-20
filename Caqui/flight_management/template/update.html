@@ -11,6 +11,12 @@
     <!-- <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"> -->
     <script src="{% static 'js/black-dashboard.min.js' %}"></script>
     <title>Caqui</title>
+
+    <style>
+        h1 {text-align: center; padding-top: 10px;}
+        p {text-align: center;}
+        div {text-align: center;}
+    </style>
 </head>
 
 <body>
@@ -23,7 +29,34 @@
         </button>
     </nav>
 
-    <h1> Update </h1>
+    <h1> ATUALIZAÇÃO DO STATUS DE VOO </h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">USUÁRIOS</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>tx_code</th>
+                        <th>dt_est_departure</th>
+                        <th>dt_est_arrival</th>
+                        <th>nm_origin</th>
+                        <th>nm_destination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in flights %}
+                        <tr>
+                            <td>{{i.tx_code}}</td>
+                            <td>{{i.dt_est_departure}}</td>
+                            <td>{i.dt_est_arrival}}</td>
+                            <td>{{i.nm_origin}}</td>
+                            <td>{{i.nm_destination}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </body>
 

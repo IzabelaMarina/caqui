@@ -7,7 +7,6 @@ from flight_management.enums import AirportCodes, Status, Role
 # nm = enums 
 # fk = foreign key
 
-
 # TODO: verificar passagem de timezone
 
 class FlightStatus(models.Model):
