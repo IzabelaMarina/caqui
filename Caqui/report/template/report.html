@@ -23,7 +23,43 @@
         </button>
     </nav>
 
-    <h1> Report </h1>
+    <div>
+        <h2>Relatório 1</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                <form>
+                    <div class="form-group">
+                        <label for="minDate">Data de início:</label>
+                        <input type="date" class="form-control" id="minDate" aria-describedby="dateHelp" placeholder="dd/mm/aaaa">
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <form>
+                    <div class="form-group">
+                        <label for="maxDate">Data de fim:</label>
+                        <input type="date" class="form-control" id="maxDate" aria-describedby="dateHelp" placeholder="dd/mm/aaaa">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <a class="btn btn-primary">Gerar Relatório</a>
+    </div>
+
+    <div>
+        <h2>Relatório 2</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                <form>
+                    <div class="form-group">
+                        <label for="flightCode">Código de Voo:</label>
+                        <input type="text" class="form-control" id="flightCode" aria-describedby="codeHelp" placeholder="Insira um código de voo">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <a class="btn btn-primary">Gerar Relatório</a>
+    </div>
 
 </body>
 
