@@ -1,6 +1,7 @@
 from unittest.util import _MAX_LENGTH
 from django.db import models
-from flight_management.enums import AirportCodes, Status, Role  
+from flight_management.enums import AirportCodes, Status, Role
+from datetime import datetime
 
 # tx = text
 # dt = datetime
@@ -39,3 +40,6 @@ class User(models.Model):
     tx_hash_key = models.CharField(max_length=64)
     class Meta:
         db_table = 'user'
+
+#vooTest = Flight.objects.create(tx_code="GOL0000", dt_est_departure=datetime.now(), dt_est_arrival=datetime.now(), nm_origin="BSB", nm_destination="CGH", fk_flightstatus=FlightStatus.objects.create())
+#vooTest.save()

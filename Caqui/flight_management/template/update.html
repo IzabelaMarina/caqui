@@ -32,27 +32,47 @@
     <h1> ATUALIZAÇÃO DO STATUS DE VOO </h1>
     <div class="row">
         <div class="col-md-12">
-            <h2 class="text-center">USUÁRIOS</h2>
+            <h2 class="text-center">VOOS</h2>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>tx_code</th>
-                        <th>dt_est_departure</th>
-                        <th>dt_est_arrival</th>
-                        <th>nm_origin</th>
-                        <th>nm_destination</th>
+                        <th>Código de Voo</th>
+                        <th>Data de Partida</th>
+                        <th>Data de chegada</th>
+                        <th>Status de Voo</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in flights %}
-                        <tr>
-                            <td>{{i.tx_code}}</td>
-                            <td>{{i.dt_est_departure}}</td>
-                            <td>{i.dt_est_arrival}}</td>
-                            <td>{{i.nm_origin}}</td>
-                            <td>{{i.nm_destination}}</td>
-                        </tr>
-                    {% endfor %}
+                        {% for flight in all_flights %}
+                            <tr>
+                                <td>{{flight.tx_code}}</td>
+                                <td>{{flight.dt_est_departure}}</td>
+                                <td>{{flight.dt_est_arrival}}</td>
+                            {% for status in flight.fk_flightstatus.nm_status %}
+                                {% if status == '0' %}
+                                <td>{{"PREVISTO"}}</td>
+                                {% elif status == '1' %}
+                                <td>{{"CANCELADO"}}</td>
+                                {% elif status == '2' %}
+                                <td>{{"EMBARCANDO"}}</td>
+                                {% elif status == '3' %}
+                                <td>{{"PROGRAMADO"}}</td>
+                                {% elif status == '4' %}
+                                <td>{{"TAXIANDO_IDA"}}</td>
+                                {% elif status == '5' %}
+                                <td>{{"PRONTO"}}</td>
+                                {% elif status == '6' %}
+                                <td>{{"AUTORIZADO"}}</td>
+                                {% elif status == '7' %}
+                                <td>{{"EM_VOO"}}</td>
+                                {% elif status == '8' %}
+                                <td>{{"ATERRISSADO"}}</td>
+                                {% else %}
+                                <td>{{"DESEMBARCANDO"}}</td>
+                                {% endif %}
+                            {% endfor %}
+                            </tr>
+                        {% endfor %}
                 </tbody>
             </table>
         </div>
