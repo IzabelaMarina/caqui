@@ -41,5 +41,8 @@ class User(models.Model):
     class Meta:
         db_table = 'user'
 
-#vooTest = Flight.objects.create(tx_code="GOL0000", dt_est_departure=datetime.now(), dt_est_arrival=datetime.now(), nm_origin="BSB", nm_destination="CGH", fk_flightstatus=FlightStatus.objects.create())
-#vooTest.save()
+#flight_status_test = FlightStatus.objects.create(dt_departure = datetime.now(),dt_arrival = datetime.now(),nm_status = Status.EM_VOO, dt_creation = datetime.now(), dt_updated = datetime.now(), dt_done = datetime.now())
+#flight_status_test.save()
+#flight_test = Flight.objects.create(tx_code="GOL0001", dt_est_departure=datetime.now(), dt_est_arrival=datetime.now(), nm_origin="BSB", nm_destination="CGH", fk_flightstatus=flight_status_test)
+#flight_test.save()
+

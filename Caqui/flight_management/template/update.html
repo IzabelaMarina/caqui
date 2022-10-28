@@ -11,7 +11,6 @@
     <!-- <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"> -->
     <script src="{% static 'js/black-dashboard.min.js' %}"></script>
     <title>Caqui</title>
-
     <style>
         h1 {text-align: center; padding-top: 10px;}
         p {text-align: center;}
@@ -40,37 +39,39 @@
                         <th>Data de Partida</th>
                         <th>Data de chegada</th>
                         <th>Status de Voo</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                         {% for flight in all_flights %}
                             <tr>
                                 <td>{{flight.tx_code}}</td>
-                                <td>{{flight.dt_est_departure}}</td>
-                                <td>{{flight.dt_est_arrival}}</td>
-                            {% for status in flight.fk_flightstatus.nm_status %}
-                                {% if status == '0' %}
+                                <td>{{flight.fk_flightstatus.dt_departure}}</td>
+                                <td>{{flight.fk_flightstatus.dt_arrival}}</td>
+                                {% if flight.fk_flightstatus.nm_status == '0' %}
                                 <td>{{"PREVISTO"}}</td>
-                                {% elif status == '1' %}
+                                {% elif flight.fk_flightstatus.nm_status == '1' %}
                                 <td>{{"CANCELADO"}}</td>
-                                {% elif status == '2' %}
+                                {% elif flight.fk_flightstatus.nm_status == '2' %}
                                 <td>{{"EMBARCANDO"}}</td>
-                                {% elif status == '3' %}
+                                {% elif flight.fk_flightstatus.nm_status == '3' %}
                                 <td>{{"PROGRAMADO"}}</td>
-                                {% elif status == '4' %}
+                                {% elif flight.fk_flightstatus.nm_status == '4' %}
                                 <td>{{"TAXIANDO_IDA"}}</td>
-                                {% elif status == '5' %}
+                                {% elif flight.fk_flightstatus.nm_status == '5' %}
                                 <td>{{"PRONTO"}}</td>
-                                {% elif status == '6' %}
+                                {% elif flight.fk_flightstatus.nm_status == '6' %}
                                 <td>{{"AUTORIZADO"}}</td>
-                                {% elif status == '7' %}
+                                {% elif flight.fk_flightstatus.nm_status == '7' %}
                                 <td>{{"EM_VOO"}}</td>
-                                {% elif status == '8' %}
+                                {% elif flight.fk_flightstatus.nm_status == '8' %}
                                 <td>{{"ATERRISSADO"}}</td>
                                 {% else %}
                                 <td>{{"DESEMBARCANDO"}}</td>
                                 {% endif %}
-                            {% endfor %}
+                                <td>
+                                    <a class="update-status" href="update/edit"> <img src="{% static 'img/edit.png' %}" height ="20" width="20" />
+                                </td>
                             </tr>
                         {% endfor %}
                 </tbody>
