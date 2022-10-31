@@ -18,15 +18,19 @@ def flightupdateview(request):
 def update_status(request):
     if request.method == 'POST':
         form = FormUpdateStatus(request.POST)
-        if form.is_valid():
-            try:
-                flight = Flight.objects.get(tx_code=request.POST['code_flight'])
-            except Flight.DoesNotExist:
-                flight = None
-            else:
-                flightstatus = flight.fk_flightstatus
+        try:
+            flight = Flight.objects.get(tx_code=request.POST['code_flight'])
+        except Flight.DoesNotExist:
+            flight = None
+        else:
+            flightstatus = flight.fk_flightstatus
+            if request.POST['select_status'] != "":
                 flightstatus.nm_status = request.POST['select_status']
-                flightstatus.save()
+            if request.POST['date_departure'] != "":
+                flightstatus.dt_departure = request.POST['date_departure']
+            if request.POST['date_arrival'] != "":
+                flightstatus.dt_arrival = request.POST['date_arrival']
+            flightstatus.save()
     else:
         form = FormUpdateStatus()
     

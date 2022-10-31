@@ -45,4 +45,7 @@ class User(models.Model):
 #flight_status_test.save()
 #flight_test = Flight.objects.create(tx_code="GOL0001", dt_est_departure=datetime.now(), dt_est_arrival=datetime.now(), nm_origin="BSB", nm_destination="CGH", fk_flightstatus=flight_status_test)
 #flight_test.save()
+#flight_test = Flight.objects.create(tx_code="GOL0002", dt_est_departure=now.strftime("%Y-%m-%d %H:%M:%S"), dt_est_arrival=now.strftime("%Y-%m-%d %H:%M:%S"), nm_origin="BSB", nm_destination="CGH", fk_flightstatus=flight_status_test)
+#flight_test.save()
+
 

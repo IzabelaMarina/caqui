@@ -23,6 +23,9 @@
             text-align: center;
             margin-top: 10px;
         }
+        .inputEnviar{
+            margin-top: 10px;
+        }
 </style>
     </style>
 
@@ -34,7 +37,7 @@
         }
 
         function messageUpdate(){
-            //alert("Status atualizado ou não atualizado!")
+            alert("Status atualizado com sucesso!")
         }
 
     </script>
@@ -52,12 +55,10 @@
     </nav>
     <h1> ATUALIZAÇÃO DO STATUS DE VOO </h1>
 
-       <form class="styleform" action="../update/edit" method=POST>
+       <form class="styleform" action="../update/edit" id="form-id" method=POST>
             {% csrf_token %}
             {{ form }}
-            <input type="submit" value="Enviar" onClick="messageUpdate()">
+            <input class="inputEnviar" type="submit" value="Enviar" onclick="messageUpdate()">
         </form>
- 
- </body>
- 
- </html>
+
+ </html> 
