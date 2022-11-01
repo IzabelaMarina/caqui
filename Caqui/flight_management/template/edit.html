@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/black-dashboard.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"> -->
+    <script src="{% static 'js/black-dashboard.min.js' %}"></script>
+    <title>Caqui</title>
+
+    <style>
+        h1 {text-align: center; padding-top: 10px;}
+        p {text-align: center;}
+        div {text-align: center;}
+        .styleform {
+            color: white;
+            margin: 0 auto; 
+            width:150px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .inputEnviar{
+            margin-top: 10px;
+        }
+</style>
+    </style>
+
+    <script>
+
+        function catchCodeFlight(){
+            document.getElementById("id_code_flight").value = sessionStorage.getItem("code_flight");
+        }
+
+        function messageUpdate(){
+            alert("Status atualizado com sucesso!")
+        }
+
+    </script>
+
+</head>
+
+<body onload="catchCodeFlight()">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="../update">Update</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <h1> ATUALIZAÇÃO DO STATUS DE VOO </h1>
+
+       <form class="styleform" action="../update/edit" id="form-id" method=POST>
+            {% csrf_token %}
+            {{ form }}
+            <input class="inputEnviar" type="submit" value="Enviar" onclick="messageUpdate()">
+        </form>
+
+ </html> 

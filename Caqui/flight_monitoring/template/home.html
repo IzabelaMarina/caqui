@@ -60,56 +60,50 @@
       <div class="col-lg-6">
         <div class="card ">
           <div class="card-header">
-            <h4 class="card-title"> Departures</h4>
+            <h4 class="card-title text-center"> DEPARTURES</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table tablesorter " id="">
                 <thead class=" text-primary">
-                  <tr>
-                    <th>
-                      Flight Code
-                    </th>
-                    <th>
-                      Destination
-                    </th>
-                    <th>
-                      Flight Status
-                    </th>
-                    <th class="text-center">
-                      Est. Dep.
-                    </th>
+                  <tr class="text-center">
+                    <th>Flight Code</th>
+                    <th>Destination</th>
+                    <th>Flight Status</th>
+                    <th class="text-center">Est. Dep.</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      GOL6942
-                    </td>
-                    <td>
-                      BEL
-                    </td>
-                    <td>
-                      Embarque imediato
-                    </td>
-                    <td class="text-center">
-                      11:20
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      TAM4242
-                    </td>
-                    <td>
-                      BSB
-                    </td>
-                    <td>
-                      Embarque próximo
-                    </td>
-                    <td class="text-center">
-                      22:00
-                    </td>
-                  </tr>
+                  {% for flight in all_flights %}
+                    <tr class="text-center">
+                        <td>{{flight.tx_code}}</td>
+                        <td>{{flight.nm_destination}}</td>
+                        {% for status in flight.fk_flightstatus.nm_status %}
+                          {% if status == '0' %}
+                          <td>{{"PREVISTO"}}</td>
+                          {% elif status == '1' %}
+                          <td>{{"CANCELADO"}}</td>
+                          {% elif status == '2' %}
+                          <td>{{"EMBARCANDO"}}</td>
+                          {% elif status == '3' %}
+                          <td>{{"PROGRAMADO"}}</td>
+                          {% elif status == '4' %}
+                          <td>{{"TAXIANDO_IDA"}}</td>
+                          {% elif status == '5' %}
+                          <td>{{"PRONTO"}}</td>
+                          {% elif status == '6' %}
+                          <td>{{"AUTORIZADO"}}</td>
+                          {% elif status == '7' %}
+                          <td>{{"EM_VOO"}}</td>
+                          {% elif status == '8' %}
+                          <td>{{"ATERRISSADO"}}</td>
+                          {% else %}
+                          <td>{{"DESEMBARCANDO"}}</td>
+                          {% endif %}
+                        {% endfor %}
+                        <td>{{flight.dt_est_departure}}</td>
+                    </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
@@ -120,47 +114,26 @@
       <div class="col-lg-6">
         <div class="card ">
           <div class="card-header">
-            <h4 class="card-title"> Arrivals</h4>
+            <h4 class="card-title text-center"> ARRIVALS</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table tablesorter " id="">
                 <thead class=" text-primary">
-                  <tr>
-                    <th>
-                      Flight Code
-                    </th>
-                    <th>
-                      Origin
-                    </th>
-                    <th class="text-center">
-                      Est. Arrival.
-                    </th>
+                  <tr class="text-center">
+                    <th>Flight Code</th>
+                    <th>Origin</th>
+                    <th class="text-center">Est. Arrival.</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      GOL6942
-                    </td>
-                    <td>
-                      GRU
-                    </td>
-                    <td class="text-center">
-                      04:20
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      TAM4242
-                    </td>
-                    <td>
-                      SSA
-                    </td>
-                    <td class="text-center">
-                      22:00
-                    </td>
-                  </tr>
+                  {% for flight in all_flights %}
+                    <tr class="text-center">
+                        <td>{{flight.tx_code}}</td>
+                        <td>{{flight.nm_origin}}</td>
+                        <td>{{flight.dt_est_arrival}}</td>
+                    </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>

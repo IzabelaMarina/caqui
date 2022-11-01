@@ -27,4 +27,5 @@ urlpatterns = [
     path('report', reportviews.reportview),
     path('', loginviews.loginview),
     path('home', flightmonitoringviews.flightmonitoringview),
+    path('update/edit', flightmanagementviews.update_status),
 ]
