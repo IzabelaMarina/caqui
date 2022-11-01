@@ -31,9 +31,8 @@
 
     <script>
 
-        function loadVariables(){
-            var codigoVoo = sessionStorage.getItem("codigoVoo");
-            document.getElementById("codigo-voo").value = codigoVoo;
+        function catchCodeFlight(){
+            document.getElementById("id_code_flight").value = sessionStorage.getItem("code_flight");
         }
 
         function messageUpdate(){
@@ -44,7 +43,7 @@
 
 </head>
 
-<body>
+<body onload="catchCodeFlight()">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="../update">Update</a>
