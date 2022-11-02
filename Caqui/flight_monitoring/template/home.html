@@ -69,7 +69,7 @@
                   <tr class="text-center">
                     <th>Flight Code</th>
                     <th>Destination</th>
-                    <th>Flight Status</th>
+                    <th>Status</th>
                     <th class="text-center">Est. Dep.</th>
                   </tr>
                 </thead>
@@ -77,30 +77,132 @@
                   {% for flight in all_flights %}
                     <tr class="text-center">
                         <td>{{flight.tx_code}}</td>
-                        <td>{{flight.nm_destination}}</td>
-                        {% for status in flight.fk_flightstatus.nm_status %}
-                          {% if status == '0' %}
-                          <td>{{"PREVISTO"}}</td>
-                          {% elif status == '1' %}
-                          <td>{{"CANCELADO"}}</td>
-                          {% elif status == '2' %}
-                          <td>{{"EMBARCANDO"}}</td>
-                          {% elif status == '3' %}
-                          <td>{{"PROGRAMADO"}}</td>
-                          {% elif status == '4' %}
-                          <td>{{"TAXIANDO_IDA"}}</td>
-                          {% elif status == '5' %}
-                          <td>{{"PRONTO"}}</td>
-                          {% elif status == '6' %}
-                          <td>{{"AUTORIZADO"}}</td>
-                          {% elif status == '7' %}
-                          <td>{{"EM_VOO"}}</td>
-                          {% elif status == '8' %}
-                          <td>{{"ATERRISSADO"}}</td>
-                          {% else %}
-                          <td>{{"DESEMBARCANDO"}}</td>
-                          {% endif %}
-                        {% endfor %}
+                        {% if flight.nm_destination == '0' %}
+                        <td>{{"BSB"}}</td>
+                        {% elif flight.nm_destination == '1' %}
+                            <td>{{"CGH"}}</td>
+                        {% elif flight.nm_destination == '2' %}
+                            <td>{{"GIG"}}</td>
+                        {% elif flight.nm_destination == '3' %}
+                            <td>{{"SSA"}}</td>
+                        {% elif flight.nm_destination == '4' %}
+                            <td>{{"FLN"}}</td>
+                        {% elif flight.nm_destination == '5' %}
+                            <td>{{"POA"}}</td>
+                        {% elif flight.nm_destination == '6' %}
+                            <td>{{"VCP"}}</td>
+                        {% elif flight.nm_destination == '7' %}
+                            <td>{{"REC"}}</td>
+                        {% elif flight.nm_destination == '8' %}
+                            <td>{{"CWB"}}</td>
+                        {% elif flight.nm_destination == '9' %}
+                            <td>{{"BEL"}}</td>
+                        {% elif flight.nm_destination == '10' %}
+                            <td>{{"VIX"}}</td>
+                        {% elif flight.nm_destination == '11' %}
+                            <td>{{"SDU"}}</td>
+                        {% elif flight.nm_destination == '12' %}
+                            <td>{{"CGB"}}</td>
+                        {% elif flight.nm_destination == '13' %}
+                            <td>{{"CGR"}}</td>
+                        {% elif flight.nm_destination == '14' %}
+                            <td>{{"FOR"}}</td>
+                        {% elif flight.nm_destination == '15' %}
+                            <td>{{"MCP"}}</td>
+                        {% elif flight.nm_destination == '16' %}
+                            <td>{{"MGF"}}</td>
+                        {% elif flight.nm_destination == '17' %}
+                            <td>{{"GYN"}}</td>
+                        {% elif flight.nm_destination == '18' %}
+                            <td>{{"NVT"}}</td>
+                        {% elif flight.nm_destination == '19' %}
+                            <td>{{"MAO"}}</td>
+                        {% elif flight.nm_destination == '20' %}
+                            <td>{{"NAT"}}</td>
+                        {% elif flight.nm_destination == '21' %}
+                            <td>{{"BPS"}}</td>
+                        {% elif flight.nm_destination == '22' %}
+                            <td>{{"MCZ"}}</td>
+                        {% elif flight.nm_destination == '23' %}
+                            <td>{{"PWM"}}</td>
+                        {% elif flight.nm_destination == '24' %}
+                            <td>{{"SLZ"}}</td>
+                        {% elif flight.nm_destination == '25' %}
+                            <td>{{"GRU"}}</td>
+                        {% elif flight.nm_destination == '26' %}
+                            <td>{{"LDB"}}</td>
+                        {% elif flight.nm_destination == '27' %}
+                            <td>{{"PVH"}}</td>'
+                        {% elif flight.nm_destination == '28' %}
+                            <td>{{"RBR"}}</td>
+                        {% elif flight.nm_destination == '29' %}
+                            <td>{{"JOI"}}</td>
+                        {% elif flight.nm_destination == '30' %}
+                            <td>{{"UDI"}}</td>
+                        {% elif flight.nm_destination == '31' %}
+                            <td>{{"CXJ"}}</td>
+                        {% elif flight.nm_destination == '32' %}
+                            <td>{{"IGU"}}</td>
+                        {% elif flight.nm_destination == '33' %}
+                            <td>{{"THE"}}</td>
+                        {% elif flight.nm_destination == '34' %}
+                            <td>{{"AJU"}}</td>
+                        {% elif flight.nm_destination == '35' %}
+                            <td>{{"JPA"}}</td>
+                        {% elif flight.nm_destination == '36' %}
+                            <td>{{"PNZ"}}</td>
+                        {% elif flight.nm_destination == '37' %}
+                            <td>{{"CNF"}}</td>
+                        {% elif flight.nm_destination == '38' %}
+                            <td>{{"BVB"}}</td>
+                        {% elif flight.nm_destination == '39' %}
+                            <td>{{"CPV"}}</td>
+                        {% elif flight.nm_destination == '40' %}
+                            <td>{{"STM"}}</td>
+                        {% elif flight.nm_destination == '41' %}
+                            <td>{{"IOS"}}</td>
+                        {% elif flight.nm_destination == '42' %}
+                            <td>{{"JDO"}}</td>
+                        {% elif flight.nm_destination == '43' %}
+                            <td>{{"IMP"}}</td>
+                        {% elif flight.nm_destination == '44' %}
+                            <td>{{"XAP"}}</td>
+                        {% elif flight.nm_destination == '45' %}
+                            <td>{{"MAB"}}</td>
+                        {% elif flight.nm_destination == '46' %}
+                            <td>{{"CZS"}}</td>
+                        {% elif flight.nm_destination == '47' %}
+                            <td>{{"PPB"}}</td>
+                        {% elif flight.nm_destination == '48' %}
+                            <td>{{"CFB"}}</td>
+                        {% elif flight.nm_destination == '49' %}
+                            <td>{{"FEN"}}</td>
+                        {% elif flight.nm_destination == '50' %}
+                            <td>{{"JTC"}}</td>
+                        {% elif flight.nm_destination == '51' %}
+                            <td>{{"MOC"}}</td>
+                        {% endif %}
+                        {% if flight.fk_flightstatus.nm_status == 0 %}
+                        <td>{{"PREVISTO"}}</td>
+                        {% elif flight.fk_flightstatus.nm_status == 1 %}
+                        <td>{{"CANCELADO"}}</td>
+                        {% elif flight.fk_flightstatus.nm_status == 2 %}
+                        <td>{{"EMBARCANDO"}}</td>
+                        {% elif flight.fk_flightstatus.nm_status == 3 %}
+                        <td>{{"PROGRAMADO"}}</td>
+                        {% elif flight.fk_flightstatus.nm_status == 4 %}
+                        <td>{{"TAXIANDO_IDA"}}</td>
+                        {% elif flight.fk_flightstatus.nm_status == 5 %}
+                        <td>{{"PRONTO"}}</td>
+                        {% elif flight.fk_flightstatus.nm_status == 6 %}
+                        <td>{{"AUTORIZADO"}}</td>
+                        {% elif flight.fk_flightstatus.nm_status == 7 %}
+                        <td>{{"EM_VOO"}}</td>
+                        {% elif flight.fk_flightstatus.nm_status == 8 %}
+                        <td>{{"ATERRISSADO"}}</td>
+                        {% else %}
+                        <td>{{"DESEMBARCANDO"}}</td>
+                        {% endif %}
                         <td>{{flight.dt_est_departure}}</td>
                     </tr>
                   {% endfor %}
@@ -130,7 +232,111 @@
                   {% for flight in all_flights %}
                     <tr class="text-center">
                         <td>{{flight.tx_code}}</td>
-                        <td>{{flight.nm_origin}}</td>
+                        {% if flight.nm_origin == '0' %}
+                        <td>{{"BSB"}}</td>
+                        {% elif flight.nm_origin == '1' %}
+                            <td>{{"CGH"}}</td>
+                        {% elif flight.nm_origin == '2' %}
+                            <td>{{"GIG"}}</td>
+                        {% elif flight.nm_origin == '3' %}
+                            <td>{{"SSA"}}</td>
+                        {% elif flight.nm_origin == '4' %}
+                            <td>{{"FLN"}}</td>
+                        {% elif flight.nm_origin == '5' %}
+                            <td>{{"POA"}}</td>
+                        {% elif flight.nm_origin == '6' %}
+                            <td>{{"VCP"}}</td>
+                        {% elif flight.nm_origin == '7' %}
+                            <td>{{"REC"}}</td>
+                        {% elif flight.nm_origin == '8' %}
+                            <td>{{"CWB"}}</td>
+                        {% elif flight.nm_origin == '9' %}
+                            <td>{{"BEL"}}</td>
+                        {% elif flight.nm_origin == '10' %}
+                            <td>{{"VIX"}}</td>
+                        {% elif flight.nm_origin == '11' %}
+                            <td>{{"SDU"}}</td>
+                        {% elif flight.nm_origin == '12' %}
+                            <td>{{"CGB"}}</td>
+                        {% elif flight.nm_origin == '13' %}
+                            <td>{{"CGR"}}</td>
+                        {% elif flight.nm_origin == '14' %}
+                            <td>{{"FOR"}}</td>
+                        {% elif flight.nm_origin == '15' %}
+                            <td>{{"MCP"}}</td>
+                        {% elif flight.nm_origin == '16' %}
+                            <td>{{"MGF"}}</td>
+                        {% elif flight.nm_origin == '17' %}
+                            <td>{{"GYN"}}</td>
+                        {% elif flight.nm_origin == '18' %}
+                            <td>{{"NVT"}}</td>
+                        {% elif flight.nm_origin == '19' %}
+                            <td>{{"MAO"}}</td>
+                        {% elif flight.nm_origin == '20' %}
+                            <td>{{"NAT"}}</td>
+                        {% elif flight.nm_origin == '21' %}
+                            <td>{{"BPS"}}</td>
+                        {% elif flight.nm_origin == '22' %}
+                            <td>{{"MCZ"}}</td>
+                        {% elif flight.nm_origin == '23' %}
+                            <td>{{"PWM"}}</td>
+                        {% elif flight.nm_origin == '24' %}
+                            <td>{{"SLZ"}}</td>
+                        {% elif flight.nm_origin == '25' %}
+                            <td>{{"GRU"}}</td>
+                        {% elif flight.nm_origin == '26' %}
+                            <td>{{"LDB"}}</td>
+                        {% elif flight.nm_origin == '27' %}
+                            <td>{{"PVH"}}</td>'
+                        {% elif flight.nm_origin == '28' %}
+                            <td>{{"RBR"}}</td>
+                        {% elif flight.nm_origin == '29' %}
+                            <td>{{"JOI"}}</td>
+                        {% elif flight.nm_origin == '30' %}
+                            <td>{{"UDI"}}</td>
+                        {% elif flight.nm_origin == '31' %}
+                            <td>{{"CXJ"}}</td>
+                        {% elif flight.nm_origin == '32' %}
+                            <td>{{"IGU"}}</td>
+                        {% elif flight.nm_origin == '33' %}
+                            <td>{{"THE"}}</td>
+                        {% elif flight.nm_origin == '34' %}
+                            <td>{{"AJU"}}</td>
+                        {% elif flight.nm_origin == '35' %}
+                            <td>{{"JPA"}}</td>
+                        {% elif flight.nm_origin == '36' %}
+                            <td>{{"PNZ"}}</td>
+                        {% elif flight.nm_origin == '37' %}
+                            <td>{{"CNF"}}</td>
+                        {% elif flight.nm_origin == '38' %}
+                            <td>{{"BVB"}}</td>
+                        {% elif flight.nm_origin == '39' %}
+                            <td>{{"CPV"}}</td>
+                        {% elif flight.nm_origin == '40' %}
+                            <td>{{"STM"}}</td>
+                        {% elif flight.nm_origin == '41' %}
+                            <td>{{"IOS"}}</td>
+                        {% elif flight.nm_origin == '42' %}
+                            <td>{{"JDO"}}</td>
+                        {% elif flight.nm_origin == '43' %}
+                            <td>{{"IMP"}}</td>
+                        {% elif flight.nm_origin == '44' %}
+                            <td>{{"XAP"}}</td>
+                        {% elif flight.nm_origin == '45' %}
+                            <td>{{"MAB"}}</td>
+                        {% elif flight.nm_origin == '46' %}
+                            <td>{{"CZS"}}</td>
+                        {% elif flight.nm_origin == '47' %}
+                            <td>{{"PPB"}}</td>
+                        {% elif flight.nm_origin == '48' %}
+                            <td>{{"CFB"}}</td>
+                        {% elif flight.nm_origin == '49' %}
+                            <td>{{"FEN"}}</td>
+                        {% elif flight.nm_origin == '50' %}
+                            <td>{{"JTC"}}</td>
+                        {% elif flight.nm_origin == '51' %}
+                            <td>{{"MOC"}}</td>
+                        {% endif %}
                         <td>{{flight.dt_est_arrival}}</td>
                     </tr>
                   {% endfor %}

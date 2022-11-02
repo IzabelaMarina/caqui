@@ -2,6 +2,10 @@ from shelve import BsdDbShelf
 from wsgiref.handlers import CGIHandler
 from django.db import models
 
+def forDjango(cls):
+    cls.do_not_call_in_templates = True
+    return cls
+
 class Status(models.IntegerChoices):
     PREVISTO = 0
     CANCELADO = 1
@@ -20,6 +24,7 @@ class Role(models.IntegerChoices):
     GERENTE_DE_OPERACOES = 2
     CONTROLADOR_DE_VOO = 3
 
+@forDjango
 class AirportCodes(models.IntegerChoices):
     BSB = 0
     CGH = 1
