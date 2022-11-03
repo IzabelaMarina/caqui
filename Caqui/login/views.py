@@ -6,6 +6,8 @@ from flight_management.models import FlightStatus, Flight, User
 from django.shortcuts import redirect
 from django.urls import reverse
 
+from flight_management.enums import Role, Status
+
 # Create your views here.
 def loginview(request):
     if request.method == 'POST':

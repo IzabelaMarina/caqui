@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Flight List</h1>
+
+{% if flight_list %}
+  <ul>
+
+  {% for flight in flight_list %}
+    <li>
+      <a href="{% url 'flight-detail' flight.id %}">
+      {{ flight.id }} - {{ flight.tx_code }}
+      </a>
+    </li>
+  {% endfor %}
+
+ </ul>
+{% else %}
+  <p>There are no flights available.</p>
+{% endif %}
+        
+        
+        
+{% endblock %}
