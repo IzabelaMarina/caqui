@@ -54,7 +54,7 @@
     </nav>
     <h1> ATUALIZAÇÃO DO STATUS DE VOO </h1>
 
-       <form class="styleform" action="../update/edit" id="form-id" method=POST>
+       <form class="styleform" method=POST action="../update/edit" id="form-id">
             {% csrf_token %}
             {{ form }}
             <input class="inputEnviar" type="submit" value="Enviar" onclick="messageUpdate()">
