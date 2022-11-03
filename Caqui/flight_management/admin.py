@@ -1,3 +1,6 @@
 from django.contrib import admin
+from flight_management.models import FlightStatus, Flight, User
 
-# Register your models here.
+admin.site.register(User)
+admin.site.register(FlightStatus)
+admin.site.register(Flight)

@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from flight_management.models import User
+
+from flight_management.models import User, Flight, FlightStatus
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic
+from .forms import FormUpdateStatus
+from flight_management.enums import Status, Role
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -27,35 +30,50 @@ class UserDelete(DeleteView):
     model = User
     success_url = reverse_lazy('users')
 
+class FlightListView(generic.ListView):
+    model = Flight
+    paginate_by = 10
 
+class FlightDetailView(generic.DetailView):
+    model = Flight
 
+class FlightCreate(CreateView):
+    model = Flight
+    fields = ['tx_code','dt_est_departure','dt_est_arrival', 'nm_origin', 'nm_destination']
 
-from django.http.response import JsonResponse
-from rest_framework.parsers import JSONParser 
-from rest_framework import status
-from flight_management.serializer import UserSerializer
-from rest_framework.decorators import api_view
-@api_view(['GET', 'POST', 'DELETE'])
-def user_list(request):
-    if request.method == 'GET':
-        users = User.objects.all()
-        
-        username = request.GET.get('tx_username', None)
-        if username is not None:
-            users = users.filter(title__icontains=username)
-        
-        users_serializer = UserSerializer(users, many=True)
-        return JsonResponse(users_serializer.data, safe=False)
-        # 'safe=False' for objects serialization
- 
-    elif request.method == 'POST':
-        user_data = JSONParser().parse(request)
-        user_serializer = UserSerializer(data=user_data)
-        if user_serializer.is_valid():
-            user_serializer.save()
-            return JsonResponse(user_serializer.data, status=status.HTTP_201_CREATED) 
-        return JsonResponse(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class FlightUpdate(UpdateView):
+    model = Flight
+    fields = ['fk_flightstatus','dt_est_departure','dt_est_arrival']
+
+class FlightDelete(DeleteView):
+    model = Flight
+    success_url = reverse_lazy('flights')
+
+def flightupdateview(request):
+    all_flights = Flight.objects.all()
+    all_status_flights = FlightStatus.objects.all()
+    context = {'all_flights' : all_flights, 'all_status_flights' : all_status_flights}
+    return render(request, "update.html", context)
+
+def update_status(request):
+    if request.method == 'POST':
+        form = FormUpdateStatus(request.POST)
+        try:
+            flight = Flight.objects.get(tx_code=request.POST['code_flight'])
+        except Flight.DoesNotExist:
+            flight = None
+        else:
+            flightstatus = flight.fk_flightstatus
+            if request.POST['select_status'] != "":
+                flightstatus.nm_status = request.POST['select_status']
+            if request.POST['date_departure'] != "":
+                flightstatus.dt_departure = request.POST['date_departure']
+            if request.POST['date_arrival'] != "":
+                flightstatus.dt_arrival = request.POST['date_arrival']
+            flightstatus.save()
+    else:
+        form = FormUpdateStatus()
     
-    elif request.method == 'DELETE':
-        count = User.objects.all().delete()
-        return JsonResponse({'message': '{} Users were deleted successfully!'.format(count[0])}, status=status.HTTP_204_NO_CONTENT)
+    context = {'form': form}
+
+    return render(request, 'edit.html', context)
