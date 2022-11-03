@@ -1,11 +1,13 @@
 from django.shortcuts import render
-
+from flight_management import views as flightmanagementviews
 from flight_management.models import User, Flight, FlightStatus
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic
 from .forms import FormUpdateStatus
 from flight_management.enums import Status, Role
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
+from django.urls import reverse
 
 # Create your views here.
 def index(request):
@@ -71,6 +73,7 @@ def update_status(request):
             if request.POST['date_arrival'] != "":
                 flightstatus.dt_arrival = request.POST['date_arrival']
             flightstatus.save()
+            return redirect(reverse(flightmanagementviews.flightupdateview))
     else:
         form = FormUpdateStatus()
     
