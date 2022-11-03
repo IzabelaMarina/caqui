@@ -28,3 +28,7 @@ urlpatterns = [
     path('home', flightmonitoringviews.flightmonitoringview),
     path('update/edit', flightmanagementviews.update_status),
 ]
+
+urlpatterns += [
+    path('flightmanagement/', include('flight_management.urls')),
+]

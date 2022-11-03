@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Flight: {{ flight.id }} </h1>
+
+<table class="table tablesorter " id="">
+    <thead class=" text-primary">
+      <tr class="text-center">
+        <th>Flight Code</th>
+        <th>Status</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Departure</th>
+        <th>Arrivals</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="text-center">
+            <td>{{flight.tx_code}}</td>
+            <td>{{flight.nm_status}}</td>
+            <td>{{flight.nm_origin}}</td>
+            <td>{{flight.nm_destination}}</td>
+            <td>{{flight.dt_est_departure}}</td>
+            <td>{{flight.dt_est_arrival}}</td>
+        </tr>
+    </tbody>
+  </table>
+
+<div style="margin-left:20px;margin-top:20px">
+
+</div>
+{% endblock %}
