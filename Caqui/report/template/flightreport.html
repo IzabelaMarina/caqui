@@ -41,25 +41,33 @@
                             type: "json",
                             data: processData(data),
                             mapping: {
-                                "fk_flightstatus": {
+                                "flightstatus__nm_status": {
                                     "caption": "Flight Status"
                                 },
                                 "tx_code": {
                                     "caption": "Flight Code"
                                 },
                                 "dt_est_departure": {
-                                    "caption": "Departure Date",
-                                    "type": "date"
+                                    "caption": "Estimated Departure Date",
+                                    "type": "date string"
                                 },
                                 "dt_est_arrival": {
-                                    "caption": "Arrival Date",
-                                    "type": "date"
+                                    "caption": "Estimated Arrival Date",
+                                    "type": "date string"
                                 },
                                 "nm_origin": {
                                     "caption": "Origin"
                                 },
                                 "nm_destination": {
                                     "caption": "Destination"
+                                },
+                                "flightstatus__dt_departure": {
+                                    "caption": "Real Departure Date",
+                                    "type" : "date string"
+                                },
+                                "flightstatus__dt_arrival": {
+                                    "caption": "Real Arrival Date",
+                                    "type" : "date string"
                                 },
                             }
                         },
@@ -68,7 +76,7 @@
                                 "uniqueName": "tx_code"
                                 },
                                 {
-                                    "uniqueName": "fk_flightstatus"
+                                    "uniqueName": "flightstatus__nm_status"
                                 },
                                 {
                                     "uniqueName": "dt_est_departure"
@@ -81,6 +89,12 @@
                                 },
                                 {
                                     "uniqueName": "nm_destination"
+                                },
+                                {
+                                    "uniqueName": "flightstatus__dt_departure"
+                                },
+                                {
+                                    "uniqueName": "flightstatus__dt_arrival"
                                 },
 
                             ]
