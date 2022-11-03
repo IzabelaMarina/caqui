@@ -4,6 +4,23 @@
 <html lang="en">
 
 <head>
+
+    <style>
+        h1 {text-align: center; padding-top: 10px;}
+        p {text-align: center;}
+        div {text-align: center;}
+        .styleform {
+            color: white;
+            margin: 0 auto; 
+            width:150px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .inputEnviar{
+            margin-top: 10px;
+        }
+    </style>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -21,32 +38,36 @@
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{% static 'js/black-dashboard.js?v=1.0.0' %}" type="text/javascript"></script>
     <script>
-    $(document).ready(function(){
-        $("select.role-select").change(function(){
-            var selectedRole = $(this).children("option:selected").val();
-            if (selectedRole == "PILOTO"){
-                var screenSelected = "home";
-                document.getElementById("roleValue").setAttribute("href",screenSelected);
-            }
-            else if (selectedRole == "OPERADOR DE VOO"){
-                var screenSelected = "home";
-                document.getElementById("roleValue").setAttribute("href",screenSelected);
-            }
-            else if (selectedRole == "GERENTE DE OPERACOES"){
-                var screenSelected = "home";
-                document.getElementById("roleValue").setAttribute("href",screenSelected);
-            }
-            else if (selectedRole == "CONTROLADOR DE VOO"){
-                var screenSelected = "home";
-                document.getElementById("roleValue").setAttribute("href",screenSelected);
-            }
-            else{
-                alert("Por favor, selecione um cargo válido!");
-            }
-            sessionStorage.setItem("roleSelected", selectedRole);
-        });
-    });
+
+    function defineRole(selectedRole){
+
+        alert("Login feito com sucesso!")
+
+        if (selectedRole == "PILOTO"){
+            var screenSelected = "home";
+            document.getElementById("roleValue").setAttribute("href",screenSelected);
+        }
+        else if (selectedRole == "OPERADOR DE VOO"){
+            var screenSelected = "home";
+            document.getElementById("roleValue").setAttribute("href",screenSelected);
+        }
+        else if (selectedRole == "GERENTE DE OPERACOES"){
+            var screenSelected = "home";
+            document.getElementById("roleValue").setAttribute("href",screenSelected);
+        }
+        else if (selectedRole == "CONTROLADOR DE VOO"){
+            var screenSelected = "home";
+            document.getElementById("roleValue").setAttribute("href",screenSelected);
+        }
+        else{
+            //alert("Por favor, selecione um cargo válido!");
+        }
+        sessionStorage.setItem("roleSelected", selectedRole);
+    }
+
     </script>
+
+</script>
     <title>Caqui</title>
 </head>
 
@@ -55,31 +76,18 @@
         <div>
             <div>
                 <h2>Seja bem-vindo ao Caqui! Por favor, faça seu login.</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Endereço de e-mail</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Digite o seu endereço de e-mail">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Senha</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite a sua senha">
-                    </div>
-                    <div>
-            
-                    <select class="role-select" aria-label="Default select example">
-                        <option selected>Selecione o seu cargo</option>
-                        <option value="PILOTO">PILOTO</option>
-                        <option value="OPERADOR DE VOO">OPERADOR DE VOO</option>
-                        <option value="GERENTE DE OPERACOES">GERENTE DE OPERACOES</option>
-                        <option value="CONTROLADOR DE VOO">CONTROLADOR DE VOO</option>
-                        </select>
-                    <div class = "col-md-12 text-center">
-                            <!-- <a href="home" class="btn btn-primary">Entrar</a> -->
-                            <a id="roleValue" onClick="selectScreen()" class="btn btn-primary">Entrar</a>                       
-                    <div>
-                        
+                <h3>Logins de Teste</h1>
+                <h3>Login: piloto e Senha: piloto</h3>
+                <h3>Login: operador e Senha: operador</h3>
+                <h3>Login: controlador e Senha: controlador</h1>
+                <h3>Login: gerente e Senha: gerente</h1>
+
+                <form class="styleform" method=POST action="" id="form-id">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input class="inputEnviar" type="submit" value="Enviar" onclick="defineRole({{selectedRole}})">
                 </form>
+                    
             </div>
         </div>
     </div>
