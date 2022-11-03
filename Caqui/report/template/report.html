@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="{% static 'css/black-dashboard.min.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"> -->
     <script src="{% static 'js/black-dashboard.min.js' %}"></script>
+    <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--<link rel="stylesheet" href="https://cdn.flexmonster.com/demo.css"> -->
     <title>Caqui</title>
 </head>
 
@@ -25,41 +28,46 @@
 
     <div>
         <h2>Relatório 1</h2>
-        <div class="row">
-            <div class="col-lg-4">
-                <form>
+        <form method = "POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="minDate">Data de início:</label>
-                        <input type="date" class="form-control" id="minDate" aria-describedby="dateHelp" placeholder="dd/mm/aaaa">
+                        <label for={formDates.min_date}> Data de início:</label>
+                        {{formDates.min_date}}
                     </div>
-                </form>
-            </div>
-            <div class="col-lg-4">
-                <form>
+                </div>
+                <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="maxDate">Data de fim:</label>
-                        <input type="date" class="form-control" id="maxDate" aria-describedby="dateHelp" placeholder="dd/mm/aaaa">
+                        <label for={formDates.max_date}> Data de fim:</label>
+                        {{formDates.max_date}}
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-        <a class="btn btn-primary">Gerar Relatório</a>
+            <button class="btn btn-primary" type = "submit" onclick="flightReport()">Gerar Relatório</button>
+        </form>
     </div>
 
     <div>
         <h2>Relatório 2</h2>
-        <div class="row">
-            <div class="col-lg-4">
-                <form>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="flightCode">Código de Voo:</label>
-                        <input type="text" class="form-control" id="flightCode" aria-describedby="codeHelp" placeholder="Insira um código de voo">
+                        <label for={formCode.flight_code}>Código de Voo:</label>
+                        {{formCode.flight_code}}
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-        <a class="btn btn-primary">Gerar Relatório</a>
+            <a class="btn btn-primary" type = "submit" onclick="flightReport()">Gerar Relatório</a>
+        </form>
     </div>
+    <script>
+        function flightReport(){
+            window.open("http://127.0.0.1:8000/report/flightreport","Flight Report","height=500,width=1000")
+        }
+    </script>
 
 </body>
 
