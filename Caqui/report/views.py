@@ -33,10 +33,10 @@ def flight_data(request):
     if (request.session.get('minDate') != 'None' and request.session.get('maxDate') != 'None'):
         minDate = datetime.strptime(request.session.get('minDate'),'%Y-%m-%d %H:%M:%S%z')
         maxDate = datetime.strptime(request.session.get('maxDate'),'%Y-%m-%d %H:%M:%S%z')
-        dataset = Flight.objects.filter(dt_est_departure__lte = maxDate, dt_est_departure__gte = minDate)
+        dataset = Flight.objects.filter(dt_est_departure__lte = maxDate, dt_est_departure__gte = minDate).values()
     elif (request.session.get('flight_code') != 'None'):
         flightCode = request.session.get('flight_code')
-        dataset = Flight.objects.filter(tx_code=flightCode)
+        dataset = Flight.objects.filter(tx_code=flightCode).values()
     else:
         dataset = []
     dataset_list = list(dataset)
