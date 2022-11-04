@@ -12,12 +12,18 @@
         .styleform {
             color: white;
             margin: 0 auto; 
-            width:150px;
+            width:182px;
             text-align: center;
             margin-top: 10px;
         }
         .inputEnviar{
             margin-top: 10px;
+        }
+        .spaceAlert{
+            margin-top: 20px;
+        }
+        .login{
+            margin-top: 20px;
         }
     </style>
 
@@ -37,37 +43,6 @@
     <script src="{% static 'js/plugins/bootstrap-notify.js' %}"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{% static 'js/black-dashboard.js?v=1.0.0' %}" type="text/javascript"></script>
-    <script>
-
-    function defineRole(selectedRole){
-
-        alert("Login feito com sucesso!")
-
-        if (selectedRole == "PILOTO"){
-            var screenSelected = "home";
-            document.getElementById("roleValue").setAttribute("href",screenSelected);
-        }
-        else if (selectedRole == "OPERADOR DE VOO"){
-            var screenSelected = "home";
-            document.getElementById("roleValue").setAttribute("href",screenSelected);
-        }
-        else if (selectedRole == "GERENTE DE OPERACOES"){
-            var screenSelected = "home";
-            document.getElementById("roleValue").setAttribute("href",screenSelected);
-        }
-        else if (selectedRole == "CONTROLADOR DE VOO"){
-            var screenSelected = "home";
-            document.getElementById("roleValue").setAttribute("href",screenSelected);
-        }
-        else{
-            //alert("Por favor, selecione um cargo válido!");
-        }
-        sessionStorage.setItem("roleSelected", selectedRole);
-    }
-
-    </script>
-
-</script>
     <title>Caqui</title>
 </head>
 
@@ -76,18 +51,41 @@
         <div>
             <div>
                 <h2>Seja bem-vindo ao Caqui! Por favor, faça seu login.</h2>
-                <h3>Logins de Teste</h1>
-                <h3>Login: piloto e Senha: piloto</h3>
-                <h3>Login: operador e Senha: operador</h3>
-                <h3>Login: controlador e Senha: controlador</h1>
-                <h3>Login: gerente e Senha: gerente</h1>
+                <h3 class="login">Logins de Teste</h3>
+
+                <table class="table tablesorter " id="" value="oi">
+                    <thead class=" text-primary">
+                      <tr class="text-center">
+                        <th>Login</th>
+                        <th>Senha</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            <td>piloto</td>
+                            <td>piloto</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>operador</td>
+                            <td>operador</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>controlador</td>
+                            <td>controlador</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>gerente</td>
+                            <td>gerente</td>
+                        </tr>
+                    </tbody>
+                  </table>
 
                 <form class="styleform" method=POST action="" id="form-id">
                     {% csrf_token %}
                     {{ form }}
-                    <input class="inputEnviar" type="submit" value="Enviar" onclick="defineRole({{selectedRole}})">
+                    <input class="inputEnviar" type="submit" value="Enviar">
                 </form>
-                    
+                <p class="spaceAlert" >Para testar as 3 tentativas incorretas, insira um login válido e erre a senha 3 vezes.</p>
             </div>
         </div>
     </div>

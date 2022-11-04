@@ -20,11 +20,24 @@
       var nav_gerente = document.getElementById("nav_gerente");
       
       function myFunction(){
-        if (roleSelected == "PILOTO"){
+
+        if (window.location.href.indexOf("piloto") > -1) {
+            roleSelected = "piloto";
+        }
+        else if (window.location.href.indexOf("operador") > -1) {
+            roleSelected = "operador";
+        }
+        else if (window.location.href.indexOf("controlador") > -1) {
+            roleSelected = "controlador";
+        }
+        else{
+            roleSelected = "gerente";
+        }
+        if (roleSelected == "piloto"){
           document.getElementById("nav_operador_controlador_gerente").style.display = "none";
           document.getElementById("nav_gerente").style.display = "none";
         }
-        else if (roleSelected == "OPERADOR DE VOO" || roleSelected == "CONTROLADOR DE VOO"){
+        else if (roleSelected == "operador" || roleSelected == "controlador"){
           document.getElementById("nav_gerente").style.display = "none";
         }
     }  
@@ -35,21 +48,21 @@
 <body onload="myFunction()">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
-            <a class="navbar-brand" href="home">Monitoring</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            <a class="navbar-brand" href="../home">Monitoring</a>
+            <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+            </button>-->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li id="nav_piloto_operador_controlador_gerente" class="nav-item">
-                  <a class="nav-link" href="update">Update flights</a>
+                  <a class="nav-link" href="../update">Update flights</a>
               </li>
               <li id="nav_operador_controlador_gerente" nav-item>
-                  <a class="nav-link" href="crud">CRUD flights</a> 
+                  <a class="nav-link" href="../crud">CRUD flights</a> 
               </li>
               <li id="nav_gerente" class="nav-item">
-                  <a class="nav-link" href="report">Flight Reports</a>
+                  <a class="nav-link" href="../report">Flight Reports</a>
               </li>
               <li class="nav-item">
                 <a href="/" class="btn btn-primary">Exit</a>
@@ -78,7 +91,9 @@
                     <tr class="text-center">
                         <td>{{flight.tx_code}}</td>
                         <td>{{flight.nm_destination}}</td>
+                        <td>{{flight.fk_flightstatus.nm_status}}</td>
                         <td>{{flight.dt_est_departure}}</td>
+                        <td</td>
                     </tr>
                   {% endfor %}
                 </tbody>
