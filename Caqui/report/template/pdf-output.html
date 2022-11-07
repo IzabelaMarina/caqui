@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8" />
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PDF Output</title>
+
+        <style>
+            @page{
+                size: "A4";
+                margin: 2.5cm 1.5cm 3.5cm 1.5cm;            
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 32px;
+            }
+
+            .table-responsive {
+                display:block; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch
+            }
+
+            .table-responsive>.table-bordered {
+                border:0
+            }
+
+            .text-center {
+                text-align:center !important
+            }
+        </style>
+
+    </head>
+    <body>
+        <h1>Report</h1>
+
+        <div class="table-responsive">
+            <table border="1|1" class="table tablesorter ">
+                <thead class=" text-primary">
+                <tr class="text-center">
+                    <th>Flight Code</th>
+                    <th>Status</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Estimated Dep Date</th>
+                    <th>Estimated Arr Date</th>
+                    <th>Real Dep Date</th>
+                    <th>Real Arr Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for flight in dataset %}
+                    <tr class="text-center">
+                        <td>{{flight.tx_code}}</td>
+                        <td>{{flight.fk_flightstatus__nm_status}}</td>
+                        <td>{{flight.nm_origin}}</td>
+                        <td>{{flight.nm_destination}}</td>
+                        <td>{{flight.dt_est_departure}}</td>
+                        <td>{{flight.dt_est_arrival}}</td>
+                        <td>{{flight.fk_flightstatus__dt_departure}}</td>
+                        <td>{{flight.fk_flightstatus__dt_arrival}}</td>
+                        <td</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </body>
+
+</html>

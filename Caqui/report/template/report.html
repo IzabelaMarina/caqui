@@ -10,21 +10,20 @@
     <link rel="stylesheet" href="{% static 'css/black-dashboard.min.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"> -->
     <script src="{% static 'js/black-dashboard.min.js' %}"></script>
-    <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!--<link rel="stylesheet" href="https://cdn.flexmonster.com/demo.css"> -->
     <title>Caqui</title>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
         <a class="navbar-brand" href="../home">Monitoring</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a href="/" class="btn btn-primary">Exit</a>
+          </li>
+      </ul>
+</nav>
 
     <div>
         <h2>Relatório 1</h2>
@@ -44,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" type = "submit" onclick="flightReport()">Gerar Relatório</button>
+            <button class="btn btn-primary" name = "date_report" type = "submit">Gerar Relatório</button>
         </form>
     </div>
 
@@ -60,14 +59,9 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" type = "submit" onclick="flightReport()">Gerar Relatório</button>
+            <button class="btn btn-primary" name = "code_report" type = "submit">Gerar Relatório</button>
         </form>
     </div>
-    <script>
-        function flightReport(){
-            window.open("http://127.0.0.1:8000/report/flightreport","Flight Report","height=500,width=1300")
-        }
-    </script>
 
 </body>
 

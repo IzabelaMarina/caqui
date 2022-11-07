@@ -7,102 +7,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--<link rel="stylesheet" href="{% static 'css/black-dashboard.min.css' %}">-->
+    <link rel="stylesheet" href="{% static 'css/black-dashboard.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"> -->
     <script src="{% static 'js/black-dashboard.min.js' %}"></script>
-    <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.flexmonster.com/demo.css">
-    <title>Flight Report</title>
-</head>
+    <title>Caqui</title>
 
 <body>
-    <div class = col-lg-12 id="data-table-container" data-url="{% url 'flight_data' %}"></div>
-
-    <script>
-        function processData(dataset) {
-            var result = []
-            dataset = JSON.parse(dataset);
-            dataset.forEach(item => result.push(item.fields));
-            return result;
-        }
-
-        $.ajax({
-            url: $("#data-table-container").attr("data-url"),
-            dataType: 'json',
-            success: function(data){
-                new Flexmonster({
-                    container: "#data-table-container",
-                    componentFolder: "https://cdn.flexmonster.com/",
-                    width: "100%",
-                    height: 430,
-                    toolbar: true,
-                    report: {
-                        dataSource: {
-                            type: "json",
-                            data: processData(data),
-                            mapping: {
-                                "flightstatus__nm_status": {
-                                    "caption": "Flight Status"
-                                },
-                                "tx_code": {
-                                    "caption": "Flight Code"
-                                },
-                                "dt_est_departure": {
-                                    "caption": "Estimated Departure Date",
-                                    "type": "date string"
-                                },
-                                "dt_est_arrival": {
-                                    "caption": "Estimated Arrival Date",
-                                    "type": "date string"
-                                },
-                                "nm_origin": {
-                                    "caption": "Origin"
-                                },
-                                "nm_destination": {
-                                    "caption": "Destination"
-                                },
-                                "flightstatus__dt_departure": {
-                                    "caption": "Real Departure Date",
-                                    "type" : "date string"
-                                },
-                                "flightstatus__dt_arrival": {
-                                    "caption": "Real Arrival Date",
-                                    "type" : "date string"
-                                },
-                            }
-                        },
-                        "slice": {
-                            "columns": [{
-                                "uniqueName": "tx_code"
-                                },
-                                {
-                                    "uniqueName": "flightstatus__nm_status"
-                                },
-                                {
-                                    "uniqueName": "dt_est_departure"
-                                },
-                                {
-                                    "uniqueName": "dt_est_arrival"
-                                },
-                                {
-                                    "uniqueName": "nm_origin"
-                                },
-                                {
-                                    "uniqueName": "nm_destination"
-                                },
-                                {
-                                    "uniqueName": "flightstatus__dt_departure"
-                                },
-                                {
-                                    "uniqueName": "flightstatus__dt_arrival"
-                                },
-
-                            ]
-                        }
-                    }
-                });
-            }
-        })
-    </script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+        <a class="navbar-brand" href="../home">Monitoring</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li id="nav_gerente" class="nav-item">
+              <a class="nav-link" href="../report">Flight Reports</a>
+          </li>
+          <li class="nav-item">
+            <a href="/" class="btn btn-primary">Exit</a>
+          </li>
+      </ul>
+</nav>
+    <div class = "card">
+        <div class="card-header">
+            <h4 class="card-title text-center"> REPORT</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                    <thead class=" text-primary">
+                    <tr class="text-center">
+                        <th>Flight Code</th>
+                        <th>Status</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Estimated Departure Date</th>
+                        <th>Estimated Arrival Date</th>
+                        <th>Real Departure Date</th>
+                        <th>Real Arrival Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for flight in dataset %}
+                        <tr class="text-center">
+                            <td>{{flight.tx_code}}</td>
+                            <td>{{flight.fk_flightstatus__nm_status}}</td>
+                            <td>{{flight.nm_origin}}</td>
+                            <td>{{flight.nm_destination}}</td>
+                            <td>{{flight.dt_est_departure}}</td>
+                            <td>{{flight.dt_est_arrival}}</td>
+                            <td>{{flight.fk_flightstatus__dt_departure}}</td>
+                            <td>{{flight.fk_flightstatus__dt_arrival}}</td>
+                            <td</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-1 mx-auto">
+        <a class="btn btn-primary" name = "pdf" href="../report/export-pdf">Exportar</a>
+    </div>
 
 </body>

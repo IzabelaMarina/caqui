@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.ReportView.as_view()),
-    path('data', views.flight_data, name = 'flight_data'),
     path('flightreport', views.reportflightview),
+    path('export-pdf', views.export_pdf),
 ]
