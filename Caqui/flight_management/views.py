@@ -55,6 +55,7 @@ def flightupdateview(request):
     all_flights = Flight.objects.all()
     all_status_flights = FlightStatus.objects.all()
     context = {'all_flights' : all_flights, 'all_status_flights' : all_status_flights}
+    print(request.session)
     return render(request, "update.html", context)
 
 def update_status(request):
