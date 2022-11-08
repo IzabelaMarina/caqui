@@ -14,6 +14,7 @@
         <th>Departure</th>
         <th>Arrivals</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,9 @@
             <td>{{flight.dt_est_arrival}}</td>
             <td>
               <a href="{% url 'flight-update' flight.id %}">EDITAR</a>
+            </td>
+            <td>
+              <a href="{% url 'flight-delete' flight.id %}">EXCLUIR</a>
             </td>
         </tr>
     </tbody>
