@@ -44,5 +44,5 @@ python3 manage.py runserver
 7. Abra a url ```http://127.0.0.1:8000``` para abrir a página inicial (login).
 8. Abra a url ```http://127.0.0.1:8000/home``` para abrir a página de monitoração de voos.
 9. Abra a url ```http://127.0.0.1:8000/report``` para abrir a página de geração de relatórios.
-10. Abra a url ```http://127.0.0.1:8000/crud``` para abrir a página de gerenciamento de dados de voo.
+10. Abra a url ```http://127.0.0.1:8000/flightmanagement/flight/``` para abrir a página de gerenciamento de dados de voo.
 11. Abra a url ```http://127.0.0.1:8000/update``` para abrir a página de atualização de status.
