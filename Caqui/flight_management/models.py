@@ -26,8 +26,8 @@ class Flight(models.Model):
     id = models.BigAutoField(primary_key=True)
     fk_flightstatus = models.ForeignKey(FlightStatus, on_delete=models.SET_NULL, blank=True, null=True)
     tx_code = models.CharField(max_length=8)
-    dt_est_departure = models.DateTimeField()
-    dt_est_arrival = models.DateTimeField()
+    dt_est_departure = models.DateTimeField(blank=True, null=True)
+    dt_est_arrival = models.DateTimeField(blank=True, null=True)
     nm_origin = models.CharField(max_length=3, choices=AirportCodes.choices)
     nm_destination = models.CharField(max_length=3, choices=AirportCodes.choices)
     class Meta:
