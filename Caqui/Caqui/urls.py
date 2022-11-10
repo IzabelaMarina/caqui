@@ -26,8 +26,7 @@ urlpatterns = [
     path('update/', flightmanagementviews.flightupdateview),
     path('report/', include('report.urls')),
     path('', loginviews.loginview),
-    path('home/<selectedRole>', flightmonitoringviews.flightmonitoringview),
-    path('home', flightmonitoringviews.flightmonitoringview_temporary),
+    path('home', flightmonitoringviews.flightmonitoringview),
     path('update/edit', flightmanagementviews.update_status),
 ]
 

@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 
 # Create your views here.
+role = None
 
 def loginview(request):
 
@@ -20,7 +21,10 @@ def loginview(request):
             if user.tx_hash_key == request.POST['password']:
                 context = {'selectedRole':user.tx_username}
                 request.session["load_count"] = 0
-                return HttpResponseRedirect(reverse(flightmonitoringviews.flightmonitoringview,kwargs={'selectedRole':user.tx_username}))
+                global role
+                role = user.tx_username
+                #return HttpResponseRedirect(reverse(flightmonitoringviews.flightmonitoringview,kwargs={'selectedRole':user.tx_username}))
+                return HttpResponseRedirect(reverse(flightmonitoringviews.flightmonitoringview))
             else:
                 if "load_count" in request.session:
                         count = request.session["load_count"] + 1

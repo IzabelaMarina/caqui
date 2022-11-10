@@ -10,6 +10,8 @@
             <th>Name</th>
             <th>Role</th>
             <th>User name</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +19,12 @@
                 <td>{{user.tx_name}}</td>
                 <td>{{user.nm_role}}</td>
                 <td>{{user.tx_username}}</td>
+                <td>
+                    <a href="{% url 'user-update' user.id %}">EDITAR</a>
+                </td>
+                <td>
+                    <a href="{% url 'user-delete' user.id %}">EXCLUIR</a>
+                  </td>
             </tr>
     </tbody>
 </table>

@@ -13,21 +13,22 @@
     <title>Caqui</title>
 
     <script>
-
-      var roleSelected = sessionStorage.getItem("roleSelected");
+      
       var nav_piloto_operador_controlador_gerente = document.getElementById("nav_piloto_operador_controlador_gerente");
       var nav_operador_controlador_gerente = document.getElementById("nav_operador_controlador_gerente");
       var nav_gerente = document.getElementById("nav_gerente");
       
       function myFunction(){
 
-        if (window.location.href.indexOf("piloto") > -1) {
+        var roleSelected = document.getElementById("cargo").value;
+
+        if (roleSelected == "piloto") {
             roleSelected = "piloto";
         }
-        else if (window.location.href.indexOf("operador") > -1) {
+        else if (roleSelected == "operador") {
             roleSelected = "operador";
         }
-        else if (window.location.href.indexOf("controlador") > -1) {
+        else if (roleSelected == "controlador") {
             roleSelected = "controlador";
         }
         else{
@@ -59,7 +60,7 @@
                   <a class="nav-link" href="../update">Update flights</a>
               </li>
               <li id="nav_operador_controlador_gerente" nav-item>
-                  <a class="nav-link" href="../crud">CRUD flights</a> 
+                  <a class="nav-link" href="../flightmanagement/flight">CRUD flights</a> 
               </li>
               <li id="nav_gerente" class="nav-item">
                   <a class="nav-link" href="../report">Flight Reports</a>
@@ -133,6 +134,9 @@
         </div>
       </div>
     </div>
+
+    <input type="hidden" id="cargo" name="custId" value="{{selectedRole}}">
+
     </body>
     
     </html>

@@ -30,7 +30,7 @@ class UserUpdate(UpdateView):
 
 class UserDelete(DeleteView):
     model = User
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('user')
 
 class FlightListView(generic.ListView):
     model = Flight
@@ -49,7 +49,7 @@ class FlightUpdate(UpdateView):
 
 class FlightDelete(DeleteView):
     model = Flight
-    success_url = reverse_lazy('flights')
+    success_url = reverse_lazy('flight')
 
 def flightupdateview(request):
     all_flights = Flight.objects.all()
