@@ -9,6 +9,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.urls import reverse
 
+listStatus = ["Previsto", "Cancelado", "Embarcando", "Programado", "Taxiando", "Pronto", "Autorizado", "Em Voo", "Aterrissado", "Desembarcando"]
+
 # Create your views here.
 def index(request):
     return render(request, "crud.html")
@@ -57,6 +59,7 @@ def flightupdateview(request):
     context = {'all_flights' : all_flights, 'all_status_flights' : all_status_flights}
     return render(request, "update.html", context)
 
+
 def update_status(request):
     if request.method == 'POST':
         form = FormUpdateStatus(request.POST)
@@ -66,14 +69,31 @@ def update_status(request):
             flight = None
         else:
             flightstatus = flight.fk_flightstatus
-            if request.POST['select_status'] != "":
-                flightstatus.nm_status = request.POST['select_status']
-            if request.POST['date_departure'] != "":
-                flightstatus.dt_departure = request.POST['date_departure']
-            if request.POST['date_arrival'] != "":
-                flightstatus.dt_arrival = request.POST['date_arrival']
-            flightstatus.save()
-            return redirect(reverse(flightmanagementviews.flightupdateview))
+            if ((listStatus.index(request.POST['select_status']) - listStatus.index(flightstatus.nm_status) == 1)):
+                if request.POST['select_status'] != "":
+                    flightstatus.nm_status = request.POST['select_status']
+                if request.POST['date_departure'] != "":
+                    flightstatus.dt_departure = request.POST['date_departure']
+                if request.POST['date_arrival'] != "":
+                    flightstatus.dt_arrival = request.POST['date_arrival']
+                flightstatus.save()
+                return redirect(reverse(flightmanagementviews.flightupdateview))
+
+            elif (listStatus.index(flightstatus.nm_status) == 0 and listStatus.index(request.POST['select_status']) == 2):
+                if request.POST['select_status'] != "":
+                    flightstatus.nm_status = request.POST['select_status']
+                if request.POST['date_departure'] != "":
+                    flightstatus.dt_departure = request.POST['date_departure']
+                if request.POST['date_arrival'] != "":
+                    flightstatus.dt_arrival = request.POST['date_arrival']
+                flightstatus.save()
+                return redirect(reverse(flightmanagementviews.flightupdateview))
+            
+            else:
+                form = FormUpdateStatus()
+                context = {'form': form}
+                print("aaa")
+                return render(request, 'edit2.html', context)
     else:
         form = FormUpdateStatus()
     

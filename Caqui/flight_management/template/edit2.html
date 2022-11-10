@@ -33,10 +33,7 @@
 
         function catchCodeFlight(){
             document.getElementById("id_code_flight").value = sessionStorage.getItem("code_flight");
-        }
-
-        function messageUpdate(){
-            //alert("Status inconsistente! Atualização não pôde ser realizada.");
+            alert("Status inconsistente! Atualização não pôde ser realizada.");
         }
 
     </script>
@@ -57,8 +54,7 @@
        <form class="styleform" method=POST action="../update/edit" id="form-id">
             {% csrf_token %}
             {{ form }}
-            <input type="hidden" id="updated?" value="{{ update }}">
-            <input class="inputEnviar" type="submit" value="Enviar" onclick="messageUpdate()">
+            <input class="inputEnviar" type="submit" value="Enviar">
         </form>
 
  </html> 
