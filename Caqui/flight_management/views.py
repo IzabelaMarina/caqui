@@ -41,9 +41,9 @@ class FlightListView(generic.ListView):
 class FlightDetailView(generic.DetailView):
     model = Flight
 
-class FlightCreate(CreateView):
-    model = Flight
-    fields = ['tx_code','dt_est_departure','dt_est_arrival', 'nm_origin', 'nm_destination']
+# class FlightCreate(CreateView):
+#     model = Flight
+#     fields = ['tx_code','dt_est_departure','dt_est_arrival', 'nm_origin', 'nm_destination']
 
 class FlightUpdate(UpdateView):
     model = Flight
@@ -100,3 +100,41 @@ def update_status(request):
     context = {'form': form}
 
     return render(request, 'edit.html', context)
+
+from flight_management.forms import CreateFlightForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+import datetime
+
+def create_flight(request):
+
+    flight = Flight()
+
+    # If this is a POST request then process the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = CreateFlightForm(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+            flight.dt_est_departure = form.cleaned_data['dt_est_departure']
+            flight.dt_est_arrival = form.cleaned_data['dt_est_arrival']
+            flight.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('flight'))
+
+    # If this is a GET (or any other method) create the default form
+    else:
+        proposed_arrival_date = datetime.datetime.now()
+        proposed_departure_date = datetime.datetime.now()
+        form = CreateFlightForm(initial={'tx_code': "FOO9999",'dt_est_departure': proposed_departure_date,'dt_est_arrival': proposed_arrival_date})
+
+    context = {
+        'form': form,
+        'flight': flight,
+    }
+
+    return render(request, 'flight_management/flight_create.html', context)
