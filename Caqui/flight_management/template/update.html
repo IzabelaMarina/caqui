@@ -17,8 +17,8 @@
         div {text-align: center;}
     </style>
     <script>
-        function passCode(code){
-            sessionStorage.setItem("code_flight", code);
+        function passCode(code_status){
+            sessionStorage.setItem("code_status_flight", code_status);
         }
     </script>
 </head>
@@ -40,6 +40,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Tipo</th>
                         <th>Código de Voo</th>
                         <th>Data de Partida</th>
                         <th>Data de chegada</th>
@@ -50,12 +51,25 @@
                 <tbody>
                         {% for flight in all_flights %}
                             <tr>
+                                {% if flight.nm_destination == "GRU" %}
+                                    <td>{{"Chegada"}}</td>
+                                {% else %}
+                                    <td>{{"Partida"}}</td>
+                                {% endif %}
                                 <td>{{flight.tx_code}}</td>
-                                <td>{{flight.fk_flightstatus.dt_departure}}</td>
-                                <td>{{flight.fk_flightstatus.dt_arrival}}</td>
+                                {% if flight.nm_destination == "GRU" %}
+                                    <td>{{"-----------"}}</td>
+                                {% else %}
+                                    <td>{{flight.fk_flightstatus.dt_departure}}</td>
+                                {% endif %}
+                                {% if flight.nm_origin == "GRU" %}
+                                <td>{{"-----------"}}</td>
+                                {% else %}
+                                    <td>{{flight.fk_flightstatus.dt_arrival}}</td>
+                                {% endif %}
                                 <td>{{flight.fk_flightstatus.nm_status}}</td>
                                 <td>
-                                    <a id="{{flight.tx_code}}" class="update-status" href="../update/edit" onclick="passCode(id)"> <img src="{% static 'img/edit.png' %}" height ="20" width="20" />
+                                    <a id="{{flight.tx_code}}{{'|'}}{{flight.fk_flightstatus.nm_status}}" class="update-status" href="../update/edit" onclick="passCode(id)"> <img src="{% static 'img/edit.png' %}" height ="20" width="20"/>
                                 </td>
                             </tr>
                         {% endfor %}

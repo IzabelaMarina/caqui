@@ -21,6 +21,7 @@ class Role(models.TextChoices):
     OPERADOR_DE_VOO = "Operador de voo"
     GERENTE_DE_OPERACOES = "Gerente de operações"
     CONTROLADOR_DE_VOO = "Controlador de Voo"
+    COMPANHIA = "Companhia"
 
 class AirportCodes(models.TextChoices):
     BSB = "BSB"

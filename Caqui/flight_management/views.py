@@ -69,7 +69,8 @@ def update_status(request):
             flight = None
         else:
             flightstatus = flight.fk_flightstatus
-            if ((listStatus.index(request.POST['select_status']) - listStatus.index(flightstatus.nm_status) == 1)):
+            dif_index = listStatus.index(request.POST['select_status']) - listStatus.index(flightstatus.nm_status)
+            if (dif_index == 1 or dif_index == 0):
                 if request.POST['select_status'] != "":
                     flightstatus.nm_status = request.POST['select_status']
                 if request.POST['date_departure'] != "":
@@ -92,8 +93,7 @@ def update_status(request):
             else:
                 form = FormUpdateStatus()
                 context = {'form': form}
-                print("aaa")
-                return render(request, 'edit2.html', context)
+                return render(request, 'edit_not_possible.html', context)
     else:
         form = FormUpdateStatus()
     

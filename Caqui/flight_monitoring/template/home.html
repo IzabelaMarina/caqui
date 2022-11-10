@@ -22,28 +22,22 @@
 
         var roleSelected = document.getElementById("cargo").value;
 
-        if (roleSelected == "piloto") {
-            roleSelected = "piloto";
+        if(roleSelected == "gerente"){
+          document.getElementById("nav_piloto_operador_controlador_companhia").style.display = "none";
+          document.getElementById("nav_operador").style.display = "none";
         }
-        else if (roleSelected == "operador") {
-            roleSelected = "operador";
-        }
-        else if (roleSelected == "controlador") {
-            roleSelected = "controlador";
-        }
-        else{
-            roleSelected = "gerente";
-        }
-        if (roleSelected == "piloto"){
-          document.getElementById("nav_operador_controlador_gerente").style.display = "none";
-          document.getElementById("nav_gerente").style.display = "none";
-        }
-        else if (roleSelected == "operador" || roleSelected == "controlador"){
-          document.getElementById("nav_gerente").style.display = "none";
-        }
-        else{
-          document.getElementById("nav_piloto_operador_controlador_gerente").style.display = "none";
-          document.getElementById("nav_operador_controlador_gerente").style.display = "none";
+
+        else {
+
+          if (roleSelected == "operador"){
+            document.getElementById("nav_piloto_operador_controlador_companhia").style.display = "none";
+            document.getElementById("nav_gerente").style.display = "none";
+          }
+
+          else{
+            document.getElementById("nav_operador").style.display = "none";
+            document.getElementById("nav_gerente").style.display = "none";
+          }
         }
     }  
     </script>
@@ -54,16 +48,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
             <a class="navbar-brand" href="../home">Monitoring</a>
-            <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>-->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li id="nav_piloto_operador_controlador_gerente" class="nav-item">
+              <li id="nav_piloto_operador_controlador_companhia" class="nav-item">
                   <a class="nav-link" href="../update">Update flights</a>
               </li>
-              <li id="nav_operador_controlador_gerente" nav-item>
+              <li id="nav_operador" nav-item>
                   <a class="nav-link" href="../flightmanagement/flight">CRUD flights</a> 
               </li>
               <li id="nav_gerente" class="nav-item">
@@ -93,6 +83,7 @@
                 </thead>
                 <tbody>
                   {% for flight in all_flights %}
+                    {% if flight.nm_origin == "GRU" %}
                     <tr class="text-center">
                         <td>{{flight.tx_code}}</td>
                         <td>{{flight.nm_destination}}</td>
@@ -100,6 +91,7 @@
                         <td>{{flight.dt_est_departure}}</td>
                         <td</td>
                     </tr>
+                    {% endif %}
                   {% endfor %}
                 </tbody>
               </table>
@@ -120,16 +112,20 @@
                   <tr class="text-center">
                     <th>Flight Code</th>
                     <th>Origin</th>
+                    <th>Status</th>
                     <th class="text-center">Est. Arrival.</th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for flight in all_flights %}
-                    <tr class="text-center">
-                        <td>{{flight.tx_code}}</td>
-                        <td>{{flight.nm_origin}}</td>
-                        <td>{{flight.dt_est_arrival}}</td>
-                    </tr>
+                    {% if flight.nm_destination == "GRU" %}
+                      <tr class="text-center">
+                          <td>{{flight.tx_code}}</td>
+                          <td>{{flight.nm_origin}}</td>
+                          <td>{{flight.fk_flightstatus.nm_status}}</td>
+                          <td>{{flight.dt_est_arrival}}</td>
+                      </tr>
+                    {% endif %}
                   {% endfor %}
                 </tbody>
               </table>

@@ -32,7 +32,10 @@
     <script>
 
         function catchCodeFlight(){
-            document.getElementById("id_code_flight").value = sessionStorage.getItem("code_flight");
+            var code = sessionStorage.getItem("code_status_flight").split('|')[0];
+            document.getElementById("id_code_flight").value = code;
+            var status = sessionStorage.getItem("code_status_flight").split('|')[1];
+            document.getElementById("id_select_status").value = status;
             alert("Status inconsistente! Atualização não pôde ser realizada.");
         }
 
