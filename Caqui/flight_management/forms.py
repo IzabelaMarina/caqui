@@ -6,10 +6,10 @@ class DateInput(forms.DateTimeInput):
 
 class FormUpdateStatus(forms.Form):
 
-    code_flight = forms.CharField(label='Código de Voo', max_length=8, required=False)
-    date_departure = forms.DateTimeField(label='Data de Partida', widget=DateInput, required=False)
-    date_arrival = forms.DateTimeField(label='Data de Chegada', widget=DateInput, required=False)
-    select_status = forms.ChoiceField(label='Status de Voo', choices=Status.choices, required=False)
+    code_flight = forms.CharField(label='Flight Code', max_length=8, required=False)
+    date_departure = forms.DateTimeField(label='Date of departure', widget=DateInput, required=False)
+    date_arrival = forms.DateTimeField(label='Date of arrival', widget=DateInput, required=False)
+    select_status = forms.ChoiceField(label='Flight Status', choices=Status.choices, required=False)
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
