@@ -1,11 +1,7 @@
 from django.shortcuts import render
-from datetime import datetime
-from flight_management.enums import Role
-from flight_management.models import FlightStatus, Flight, User
+from flight_management.models import Flight
 from login import views
-#from django.core import serializers
 
-# Create your views here.
 def flightmonitoringview(request):
     all_flights = Flight.objects.all()
     context = {

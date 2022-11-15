@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from flight_management import views as flightmanagementviews
 from flight_management.models import User, Flight, FlightStatus
+from flight_management.enums import AirportCodes
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic
 from .forms import FormUpdateStatus
-from flight_management.enums import Status, Role
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -108,7 +108,10 @@ import datetime
 
 def create_flight(request):
 
-    flight = Flight()
+    flight_status = FlightStatus()
+    flight_status.save()
+    
+    flight = Flight(fk_flightstatus=flight_status)
 
     # If this is a POST request then process the Form data
     if request.method == 'POST':
@@ -119,6 +122,9 @@ def create_flight(request):
         # Check if the form is valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+            flight.tx_code = form.cleaned_data['tx_code']
+            flight.nm_destination = form.cleaned_data['nm_destination']
+            flight.nm_origin = form.cleaned_data['nm_origin']
             flight.dt_est_departure = form.cleaned_data['dt_est_departure']
             flight.dt_est_arrival = form.cleaned_data['dt_est_arrival']
             flight.save()
@@ -130,7 +136,7 @@ def create_flight(request):
     else:
         proposed_arrival_date = datetime.datetime.now()
         proposed_departure_date = datetime.datetime.now()
-        form = CreateFlightForm(initial={'tx_code': "FOO9999",'dt_est_departure': proposed_departure_date,'dt_est_arrival': proposed_arrival_date})
+        form = CreateFlightForm(initial={'tx_code': "FOO9999",'dt_est_departure': proposed_departure_date,'dt_est_arrival': proposed_arrival_date, 'nm_origin': AirportCodes.GRU, 'nm_destination': AirportCodes.GRU})
 
     context = {
         'form': form,

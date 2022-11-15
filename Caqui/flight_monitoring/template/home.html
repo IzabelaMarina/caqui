@@ -35,8 +35,14 @@
           }
 
           else{
-            document.getElementById("nav_operador").style.display = "none";
-            document.getElementById("nav_gerente").style.display = "none";
+
+              if (roleSelected == "admin"){
+              }
+
+              else {
+                document.getElementById("nav_operador").style.display = "none";
+                document.getElementById("nav_gerente").style.display = "none";
+              }
           }
         }
     }  
