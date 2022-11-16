@@ -12,20 +12,46 @@
     <script src="{% static 'js/black-dashboard.min.js' %}"></script>
     <title>Caqui</title>
 
-<body>
+<body style="overflow: scroll; overflow-x: hidden;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand mr-0 mr-md-2" href="../home" aria-label="Caqui">
             <img src="{% static 'img/caqui.png' %}" width="50 px">
         </a>  
         <a class="navbar-brand" href="../home">Monitoring</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li id="nav_gerente" class="nav-item">
-              <a class="nav-link" href="../report">Flight Reports</a>
-          </li>
-      </ul>
-      <a href="/" class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3">Exit</a>
-</nav>
+        <li id="nav_gerente" class="nav-item">
+            <a class="nav-link" href="../report">Flight Reports</a>
+        </li>
+    </ul>
+    <a href="/" class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3">Exit</a>
+    </nav>
+    <div class = "card">
+        <div class="card-header">
+            <h4 class="card-title text-center"> COMPANHIAS ÁEREAS </h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                    <thead class=" text-primary">
+                    <tr class="text-center">
+                        <th>Company</th>
+                        <th>Flights Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for company in companies %}
+                        <tr class="text-center">
+                            <td>{{company.0}}</td>
+                            <td>{{company.1}}</td>
+                            <td</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <div class = "card">
         <div class="card-header">
             <h4 class="card-title text-center"> PARTIDAS </h4>
@@ -36,7 +62,7 @@
                     <thead class=" text-primary">
                     <tr class="text-center">
                         <th>Flight Code</th>
-                        <th>Status</th>
+                        <th>Company</th>
                         <th>Destination</th>
                         <th>Estimated Departure Date</th>
                         <th>Estimated Arrival Date</th>
@@ -48,7 +74,7 @@
                         {% if flight.nm_origin == "GRU" %}
                             <tr class="text-center">
                                 <td>{{flight.tx_code}}</td>
-                                <td>{{flight.fk_flightstatus__nm_status}}</td>
+                                <td>{{flight.tx_code|slice:"3"}}</td>
                                 <td>{{flight.nm_destination}}</td>
                                 <td>{{flight.dt_est_departure}}</td>
                                 <td>{{flight.dt_est_arrival}}</td>
@@ -72,7 +98,7 @@
                     <thead class=" text-primary">
                     <tr class="text-center">
                         <th>Flight Code</th>
-                        <th>Status</th>
+                        <th>Company</th>
                         <th>Origin</th>
                         <th>Estimated Arrival Date</th>
                         <th>Real Arrival Date</th>
@@ -83,7 +109,7 @@
                         {% if flight.nm_destination == "GRU" %}
                         <tr class="text-center">
                             <td>{{flight.tx_code}}</td>
-                            <td>{{flight.fk_flightstatus__nm_status}}</td>
+                            <td>{{flight.tx_code|slice:"3"}}</td>
                             <td>{{flight.nm_origin}}</td>
                             <td>{{flight.dt_est_arrival}}</td>
                             <td>{{flight.fk_flightstatus__dt_arrival}}</td>
@@ -97,7 +123,7 @@
         </div>
     </div>
     <div class="col-lg-1 mx-auto">
-        <a class="btn btn-primary" name = "pdf" href="../report/export-pdf">Exportar</a>
+        <a class="btn btn-primary" name = "pdf" href="../report/export-pdf-cmpny">Exportar</a>
     </div>
 
 </body>
