@@ -28,10 +28,11 @@
 </nav>
 
     <div>
-        <h2>Relatório 1</h2>
+        <h2 style="text-align: center;">Relatórios</h2>
+        <h4 style="margin-bottom:0;">Insira o período para a geração do relatório:</h4>
         <form method = "POST">
             {% csrf_token %}
-            <div class="row">
+            <div class="row" style="margin-bottom:.5rem">
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label for={formDates.min_date}> Data de início:</label>
@@ -45,26 +46,18 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" name = "date_report" type = "submit">Gerar Relatório</button>
-        </form>
-    </div>
-
-    <div>
-        <h2>Relatório 2</h2>
-        <form method="POST">
-            {% csrf_token %}
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for={formCode.flight_code}>Código de Voo:</label>
-                        {{formCode.flight_code}}
-                    </div>
+                    <h4 style="margin-bottom:0;">Relatório Geral de Voos</h4>
+                    <button class="btn btn-primary" name = "date_report" type = "submit">Gerar Relatório</button>
+                </div>
+                <div class="col-lg-4">
+                    <h4 style="margin-bottom:0;">Relatório de Companhias Aéreas</h4>
+                    <button class="btn btn-primary" name = "cmpny_report" type = "submit">Gerar Relatório</button>
                 </div>
             </div>
-            <button class="btn btn-primary" name = "code_report" type = "submit">Gerar Relatório</button>
         </form>
     </div>
-
 </body>
 
 </html>

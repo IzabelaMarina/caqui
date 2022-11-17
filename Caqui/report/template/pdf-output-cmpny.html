@@ -11,10 +11,6 @@
                 margin: 2.5cm 1.5cm 3.5cm 1.5cm;            
             }
 
-            @bottom-right {
-                content: "Page " counter(page) " of " counter(pages);
-            }
-
             h1 {
                 text-align: center;
                 font-size: 32px;
@@ -31,12 +27,37 @@
             .text-center {
                 text-align:center !important
             }
+
+            @bottom-right{
+                content: "Page " counter(page) " of " counter(pages);
+            }
         </style>
 
     </head>
     <body>
         <p style="text-align:center"><img src='..\static\img\caqui_logo_pb.png' width="300 px" /></p>
-        <h1>Relatorio Geral de Voos</h1>
+        <h1>Relatorio Geral de Companhias Aereas</h1>
+
+        <div class="table-responsive">
+            <h3 class="card-title text-center">Companhias Aereas</h3>
+            <table border="1|1" class="table tablesorter ">
+                <thead class=" text-primary">
+                    <tr class="text-center">
+                        <th>Company</th>
+                        <th>Flights Count</th>
+                    </tr>
+                    </thead>
+                <tbody>
+                    {% for company in companies %}
+                        <tr class="text-center">
+                            <td>{{company.0}}</td>
+                            <td>{{company.1}}</td>
+                            <td</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+        </div>
 
         <div class="table-responsive">
             <h3 class="card-title text-center">Partidas</h3>
@@ -44,19 +65,19 @@
                 <thead class=" text-primary">
                     <tr class="text-center">
                         <th>Flight Code</th>
-                        <th>Status</th>
+                        <th>Company</th>
                         <th>Destination</th>
                         <th>Est. Departure Date</th>
                         <th>Est. Arrival Date</th>
                         <th>Real Departure Date</th>
                     </tr>
                     </thead>
-                <tbody>
+                    <tbody>
                     {% for flight in dataset %}
                         {% if flight.nm_origin == "GRU" %}
                             <tr class="text-center">
                                 <td>{{flight.tx_code}}</td>
-                                <td>{{flight.fk_flightstatus__nm_status}}</td>
+                                <td>{{flight.tx_code|slice:"3"}}</td>
                                 <td>{{flight.nm_destination}}</td>
                                 <td>{{flight.dt_est_departure}}</td>
                                 <td>{{flight.dt_est_arrival}}</td>
@@ -74,18 +95,18 @@
                 <thead class=" text-primary">
                     <tr class="text-center">
                         <th>Flight Code</th>
-                        <th>Status</th>
+                        <th>Company</th>
                         <th>Origin</th>
                         <th>Est. Arrival Date</th>
                         <th>Real Arrival Date</th>
                     </tr>
                     </thead>
-                <tbody>
+                    <tbody>
                     {% for flight in dataset %}
                         {% if flight.nm_destination == "GRU" %}
                         <tr class="text-center">
                             <td>{{flight.tx_code}}</td>
-                            <td>{{flight.fk_flightstatus__nm_status}}</td>
+                            <td>{{flight.tx_code|slice:"3"}}</td>
                             <td>{{flight.nm_origin}}</td>
                             <td>{{flight.dt_est_arrival}}</td>
                             <td>{{flight.fk_flightstatus__dt_arrival}}</td>
