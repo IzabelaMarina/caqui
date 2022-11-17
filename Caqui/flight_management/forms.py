@@ -6,10 +6,10 @@ class DateInput(forms.DateTimeInput):
 
 class FormUpdateStatus(forms.Form):
 
-    code_flight = forms.CharField(label='Flight Code', max_length=8, required=False)
-    date_departure = forms.DateTimeField(label='Date of departure', widget=DateInput, required=False)
-    date_arrival = forms.DateTimeField(label='Date of arrival', widget=DateInput, required=False)
-    select_status = forms.ChoiceField(label='Flight Status', choices=Status.choices, required=False)
+    code_flight = forms.CharField(label='Código', max_length=8, required=False)
+    date_departure = forms.DateTimeField(label='Data de partida', widget=DateInput, required=False)
+    date_arrival = forms.DateTimeField(label='Data de chegada', widget=DateInput, required=False)
+    select_status = forms.ChoiceField(label='Status', choices=Status.choices, required=False)
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -20,24 +20,24 @@ utc=pytz.UTC
 
 class CreateFlightForm(forms.Form):
     tx_code = forms.CharField(
-            label='Flight Code',
+            label='Código',
             # length=7,
             validators=[
                 RegexValidator(
                     '^[A-Z]{3}\d{4}$',
-                    message="Flight Code must consist of 3 uppercase letters followed by 4 digits."
+                    message="Código de voo deve ter 3 letras maiúsculas seguidas por 4 dígitos."
                 )
             ],
             required=True)
     dt_est_departure = forms.DateTimeField(
-            label='Estimated Departure Datetime', 
+            label='Data de Partida Estimada', 
             widget=DateInput)
 
     dt_est_arrival = forms.DateTimeField(
-            label='Estimated Arrival Datetime', 
+            label='Data de Chegada Estimada', 
             widget=DateInput)
-    nm_origin = forms.ChoiceField(label='Origin',choices=AirportCodes.choices, required=True)
-    nm_destination = forms.ChoiceField(label='Destination',choices=AirportCodes.choices, required=True)
+    nm_origin = forms.ChoiceField(label='Origem',choices=AirportCodes.choices, required=True)
+    nm_destination = forms.ChoiceField(label='Destino',choices=AirportCodes.choices, required=True)
 
     def clean_dt_est_departure(self):
         data = self.cleaned_data['dt_est_departure']
@@ -45,7 +45,7 @@ class CreateFlightForm(forms.Form):
 
         # Check date is not in past.
         if data < utc.localize(datetime.datetime.now()):
-            raise ValidationError(_('Invalid date - flight in the past\nThis isn\'t back to the future!'))
+            raise ValidationError(_('Data inválida - voo no passado! Não estamos em \'De volta para o futuro\'!'))
 
         # Remember to always return the cleaned data.
         return data
@@ -56,7 +56,7 @@ class CreateFlightForm(forms.Form):
 
         # Check date is not in past.
         if data < utc.localize(datetime.datetime.now()):
-            raise ValidationError(_('Invalid date - flight in the past\nThis isn\'t back to the future!'))
+            raise ValidationError(_('Data inválida - voo no passado! Não estamos em \'De volta para o futuro\'!'))
         
         # Remember to always return the cleaned data.
         return data
@@ -68,15 +68,15 @@ class CreateFlightForm(forms.Form):
 
         if dt_est_departure and dt_est_arrival:
             if dt_est_arrival < dt_est_departure:
-                raise ValidationError(_('Plane cannot arrive before it departs.'))
+                raise ValidationError(_('Avião não pode chegar antes de partir'))
 
         nm_origin = cleaned_data.get("nm_origin")
         nm_destination = cleaned_data.get("nm_destination")
 
         if nm_origin and nm_destination:
             if (AirportCodes.GRU not in nm_origin) and (AirportCodes.GRU not in nm_destination):
-                raise ValidationError(_('Cannot create a flight that does not involve our airport: GRU'))
+                raise ValidationError(_('Proibido criar voo que não envolva noos aeroporto: GRU'))
             elif (nm_origin == AirportCodes.GRU) and (nm_destination == AirportCodes.GRU):
-                raise ValidationError(_('Cannot create a flight that departs and arrives at the same airport'))
+                raise ValidationError(_('Proibido criar voo que parta e chegue do mesmo aeroporto.'))
             
         return cleaned_data
