@@ -68,6 +68,10 @@ def create_flight(request):
             flight.nm_origin = form.cleaned_data['nm_origin']
             flight.dt_est_departure = form.cleaned_data['dt_est_departure']
             flight.dt_est_arrival = form.cleaned_data['dt_est_arrival']
+
+            flight_status.dt_departure = flight.dt_est_departure
+            flight_status.dt_arrival = flight.dt_est_arrival
+            flight_status.save()
             flight.save()
 
             # redirect to a new URL:
@@ -94,14 +98,14 @@ def create_flight(request):
 #     # template_name = 'flight_update.html'
 
 def update_flight(request, pk):
-    # If this is a POST request then process the Form data
     flight = get_object_or_404(Flight, id = pk)
 
     if request.method == 'POST':
-        # Create a form instance and populate it with data from the request (binding):
         form = UpdateFlightForm(request.POST)
 
         if form.is_valid():
+            flight.dt_est_departure = form.cleaned_data['dt_est_departure']
+            flight.dt_est_arrival = form.cleaned_data['dt_est_arrival']
             flight.save()
             return HttpResponseRedirect(reverse('flight'))
 
