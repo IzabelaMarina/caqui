@@ -45,10 +45,10 @@
 <body onload="catchCodeFlight()">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand mr-0 mr-md-2" href="../home" aria-label="Caqui">
+        <a class="navbar-brand mr-0 mr-md-2" href="{% url 'index' %}" aria-label="Caqui">
             <img src="{% static 'img/caqui.png' %}" width="50 px">
         </a> 
-        <a class="navbar-brand" href="../update">Update</a>
+        <a class="navbar-brand" href="{% url 'flightstatus' %}">Update</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             </ul>
@@ -57,7 +57,9 @@
     </nav>
     <h1> ATUALIZAÇÃO DO STATUS DE VOO </h1>
 
-       <form class="styleform" method=POST action="../update/edit" id="form-id">
+    <p>Are you sure you want to update the flightstatus: {{ flightstatus }}?</p>
+
+       <form class="styleform" method=POST action="" id="form-id">
             {% csrf_token %}
             {{ form }}
             <input class="inputEnviar" type="submit" value="Enviar">

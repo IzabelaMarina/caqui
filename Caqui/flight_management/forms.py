@@ -6,7 +6,7 @@ class DateInput(forms.DateTimeInput):
 
 class FormUpdateStatus(forms.Form):
 
-    code_flight = forms.CharField(label='Flight Code', max_length=8, required=False)
+    # code_flight = forms.CharField(label='Flight Code', max_length=8, required=False)
     date_departure = forms.DateTimeField(label='Date of departure', widget=DateInput, required=False)
     date_arrival = forms.DateTimeField(label='Date of arrival', widget=DateInput, required=False)
     select_status = forms.ChoiceField(label='Flight Status', choices=Status.choices, required=False)

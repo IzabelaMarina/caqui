@@ -23,11 +23,9 @@ from login import views as loginviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('crud', flightmanagementviews.index),
-    path('update/', flightmanagementviews.flightupdateview),
     path('report/', include('report.urls')),
     path('', loginviews.loginview),
     path('home', flightmonitoringviews.flightmonitoringview),
-    path('update/edit', flightmanagementviews.update_status),
 ]
 
 urlpatterns += [

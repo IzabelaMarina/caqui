@@ -133,43 +133,43 @@ def flightupdateview(request):
     return render(request, "update.html", context)
 
 
-def update_status(request):
+def update_status(request, pk):
+    flightstatus = get_object_or_404(FlightStatus, id = pk)
+
     if request.method == 'POST':
         form = FormUpdateStatus(request.POST)
-        try:
-            flight = Flight.objects.get(tx_code=request.POST['code_flight'])
-        except Flight.DoesNotExist:
-            flight = None
-        else:
-            flightstatus = flight.fk_flightstatus
-            dif_index = listStatus.index(request.POST['select_status']) - listStatus.index(flightstatus.nm_status)
-            if (dif_index == 1 or dif_index == 0):
-                if request.POST['select_status'] != "":
-                    flightstatus.nm_status = request.POST['select_status']
-                if request.POST['date_departure'] != "":
-                    flightstatus.dt_departure = request.POST['date_departure']
-                if request.POST['date_arrival'] != "":
-                    flightstatus.dt_arrival = request.POST['date_arrival']
-                flightstatus.save()
-                return redirect(reverse(flightmanagementviews.flightupdateview))
 
-            elif (listStatus.index(flightstatus.nm_status) == 0 and listStatus.index(request.POST['select_status']) == 2):
-                if request.POST['select_status'] != "":
-                    flightstatus.nm_status = request.POST['select_status']
-                if request.POST['date_departure'] != "":
-                    flightstatus.dt_departure = request.POST['date_departure']
-                if request.POST['date_arrival'] != "":
-                    flightstatus.dt_arrival = request.POST['date_arrival']
-                flightstatus.save()
-                return redirect(reverse(flightmanagementviews.flightupdateview))
-            
-            else:
-                form = FormUpdateStatus()
-                context = {'form': form}
-                return render(request, 'edit_not_possible.html', context)
+        dif_index = listStatus.index(request.POST['select_status']) - listStatus.index(flightstatus.nm_status)
+        if (dif_index == 1 or dif_index == 0):
+            if request.POST['select_status'] != "":
+                flightstatus.nm_status = request.POST['select_status']
+            if request.POST['date_departure'] != "":
+                flightstatus.dt_departure = request.POST['date_departure']
+            if request.POST['date_arrival'] != "":
+                flightstatus.dt_arrival = request.POST['date_arrival']
+            flightstatus.save()
+            return redirect(reverse(flightmanagementviews.flightupdateview))
+
+        elif (listStatus.index(flightstatus.nm_status) == 0 and listStatus.index(request.POST['select_status']) == 2):
+            if request.POST['select_status'] != "":
+                flightstatus.nm_status = request.POST['select_status']
+            if request.POST['date_departure'] != "":
+                flightstatus.dt_departure = request.POST['date_departure']
+            if request.POST['date_arrival'] != "":
+                flightstatus.dt_arrival = request.POST['date_arrival']
+            flightstatus.save()
+            return redirect(reverse(flightmanagementviews.flightupdateview))
+        
+        else:
+            form = FormUpdateStatus()
+            context = {'form': form}
+            return render(request, 'edit_not_possible.html', context)
     else:
         form = FormUpdateStatus()
     
-    context = {'form': form}
+    context = {
+        'form': form,
+        'flightstatus': flightstatus,
+    }
 
     return render(request, 'edit.html', context)

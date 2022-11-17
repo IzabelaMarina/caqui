@@ -20,3 +20,8 @@ urlpatterns += [
     path('flight/<int:pk>/update/', views.update_flight, name='flight-update'),
     path('flight/<int:pk>/delete/', views.FlightDelete.as_view(), name='flight-delete'),
 ]
+
+urlpatterns += [
+    path('flightstatus/<int:pk>/update/', views.update_status, name='flightstatus-update'),
+    path('flightstatus/', views.flightupdateview, name='flightstatus'),
+]

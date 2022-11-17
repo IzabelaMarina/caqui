@@ -60,7 +60,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li id="nav_piloto_operador_controlador_companhia" class="nav-item">
-                  <a class="nav-link" href="../update">Update flights</a>
+                  <a class="nav-link" href="../flightmanagement/flightstatus">Update flights</a>
               </li>
               <li id="nav_operador" nav-item>
                   <a class="nav-link" href="../flightmanagement/flight">CRUD flights</a> 
@@ -85,7 +85,7 @@
                     <th>Flight Code</th>
                     <th>Destination</th>
                     <th>Status</th>
-                    <th class="text-center">Est. Dep.</th>
+                    <th class="text-center">Partida</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -95,7 +95,7 @@
                         <td>{{flight.tx_code}}</td>
                         <td>{{flight.nm_destination}}</td>
                         <td>{{flight.fk_flightstatus.nm_status}}</td>
-                        <td>{{flight.dt_est_departure}}</td>
+                        <td>{{flight.fk_flightstatus.dt_departure}}</td>
                         <td</td>
                     </tr>
                     {% endif %}
@@ -120,7 +120,7 @@
                     <th>Flight Code</th>
                     <th>Origin</th>
                     <th>Status</th>
-                    <th class="text-center">Est. Arrival.</th>
+                    <th class="text-center">Chegada</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -130,7 +130,7 @@
                           <td>{{flight.tx_code}}</td>
                           <td>{{flight.nm_origin}}</td>
                           <td>{{flight.fk_flightstatus.nm_status}}</td>
-                          <td>{{flight.dt_est_arrival}}</td>
+                          <td>{{flight.fk_flightstatus.dt_arrival}}</td>
                       </tr>
                     {% endif %}
                   {% endfor %}
