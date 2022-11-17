@@ -8,7 +8,7 @@
         <style>
             @page{
                 size: "A4";
-                margin: 2.5cm 1.5cm 3.5cm 1.5cm;            
+                margin: 2.5cm 1cm 3.5cm 1cm;            
             }
 
             h1 {
@@ -60,15 +60,13 @@
         </div>
 
         <div class="table-responsive">
-            <h3 class="card-title text-center">Partidas</h3>
+            <h3 class="card-title text-center" style="margin-top: 50px;">Partidas</h3>
             <table border="1|1" class="table tablesorter ">
                 <thead class=" text-primary">
                     <tr class="text-center">
                         <th>Flight Code</th>
                         <th>Company</th>
                         <th>Destination</th>
-                        <th>Est. Departure Date</th>
-                        <th>Est. Arrival Date</th>
                         <th>Real Departure Date</th>
                     </tr>
                     </thead>
@@ -79,8 +77,6 @@
                                 <td>{{flight.tx_code}}</td>
                                 <td>{{flight.tx_code|slice:"3"}}</td>
                                 <td>{{flight.nm_destination}}</td>
-                                <td>{{flight.dt_est_departure}}</td>
-                                <td>{{flight.dt_est_arrival}}</td>
                                 <td>{{flight.fk_flightstatus__dt_departure}}</td>
                                 <td</td>
                             </tr>
@@ -90,14 +86,13 @@
             </table>
         </div>
         <div class="table-responsive">
-            <h3 class="card-title text-center">Chegadas</h3>
+            <h3 class="card-title text-center" style="margin-top: 50px;">Chegadas</h3>
             <table border="1|1" class="table tablesorter ">
                 <thead class=" text-primary">
                     <tr class="text-center">
                         <th>Flight Code</th>
                         <th>Company</th>
                         <th>Origin</th>
-                        <th>Est. Arrival Date</th>
                         <th>Real Arrival Date</th>
                     </tr>
                     </thead>
@@ -108,7 +103,6 @@
                             <td>{{flight.tx_code}}</td>
                             <td>{{flight.tx_code|slice:"3"}}</td>
                             <td>{{flight.nm_origin}}</td>
-                            <td>{{flight.dt_est_arrival}}</td>
                             <td>{{flight.fk_flightstatus__dt_arrival}}</td>
                             <td</td>
                         </tr>
