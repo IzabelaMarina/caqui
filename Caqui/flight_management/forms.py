@@ -80,3 +80,23 @@ class CreateFlightForm(forms.Form):
                 raise ValidationError(_('Proibido criar voo que parta e chegue do mesmo aeroporto.'))
             
         return cleaned_data
+
+class UpdateFlightForm(forms.Form):
+    dt_est_departure = forms.DateTimeField(
+            label='Estimated Departure Datetime', 
+            widget=DateInput)
+
+    dt_est_arrival = forms.DateTimeField(
+            label='Estimated Arrival Datetime', 
+            widget=DateInput)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        dt_est_departure = cleaned_data.get("dt_est_departure")
+        dt_est_arrival = cleaned_data.get("dt_est_arrival")
+
+        if dt_est_departure and dt_est_arrival:
+            if dt_est_arrival < dt_est_departure:
+                raise ValidationError(_('Plane cannot arrive before it departs.'))
+
+        return cleaned_data

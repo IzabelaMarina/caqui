@@ -20,12 +20,11 @@
   <div class="col-sm-2">
   {% block sidebar %}
   <ul class="sidebar-nav">
-     <!-- <li><a href="{% url 'index' %}">Home</a></li> -->
-    <li><a href="{% url 'index' %}">Home</a></li>
-    <li><a href="{% url 'user' %}">Usuários</a></li>
-    <li><a href="{% url 'flight' %}">Voos</a></li>
-    <li><a href="{% url 'flight-create' %}">Criar Voos</a></li>
-    <li><a href="{% url 'user-create' %}">Criar usuários</a></li>
+    <a class="btn btn-outline-primary" href="{% url 'index' %}">Home</a>
+    <a class="btn btn-secondary" href="{% url 'user' %}">Usuários</a>
+    <a class="btn btn-secondary" href="{% url 'flight' %}">Voos</a>
+    <a class="btn btn-secondary" href="{% url 'flight-create' %}">Criar Voos</a>
+    <a class="btn btn-secondary" href="{% url 'user-create' %}">Criar Usuários</a>
   </ul>
  
 {% endblock %}

@@ -1,6 +1,5 @@
 from django.db import models
 from flight_management.enums import AirportCodes, Status, Role
-from datetime import datetime
 from django.urls import reverse  # To generate URLS by reversing URL patterns
 
 # tx = text
