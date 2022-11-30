@@ -29,11 +29,19 @@
         <a class="navbar-brand mr-0 mr-md-2" href="../home" aria-label="Caqui">
             <img src="{% static 'img/caqui.png' %}" width="50 px">
         </a> 
+<<<<<<< HEAD
         <a class="navbar-brand" href="../home">Monitoring</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             </ul>
             <a href="/" class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3">Exit</a>
+=======
+        <a class="navbar-brand" href="../home">Monitoramento</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <a href="/" class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3">Sair</a>
+>>>>>>> 2022-10-20-luc
       </div>
     </nav>
 
@@ -73,7 +81,7 @@
                                 {% endif %}
                                 <td>{{flight.fk_flightstatus.nm_status}}</td>
                                 <td>
-                                    <a id="{{flight.tx_code}}{{'|'}}{{flight.fk_flightstatus.nm_status}}" class="update-status" href="../update/edit" onclick="passCode(id)"> <img src="{% static 'img/edit.png' %}" height ="20" width="20"/>
+                                    <a id="{{flight.tx_code}}{{'|'}}{{flight.fk_flightstatus.nm_status}}{{'|'}}{{flight.nm_destination}}" class="update-status" href="../update/edit" onclick="passCode(id)"> <img src="{% static 'img/edit.png' %}" height ="20" width="20"/>
                                 </td>
                             </tr>
                         {% endfor %}
