@@ -19,7 +19,7 @@
         .styleform {
             color: white;
             margin: 0 auto; 
-            width:182px;
+            width:160px;
             text-align: center;
             margin-top: 10px;
         }
@@ -32,6 +32,24 @@
     <script>
 
         function catchCodeFlight(){
+            var airportDestination = sessionStorage.getItem("code_status_flight").split('|')[2];
+            var dropdown = document.getElementById("id_select_status");
+            dropdown.innerHTML = "";
+            if (airportDestination != "GRU"){
+                dropdown.add(new Option("Previsto"));
+                dropdown.add(new Option("Cancelado"));
+                dropdown.add(new Option("Embarcando"));
+                dropdown.add(new Option("Programado"));
+                dropdown.add(new Option("Taxiando"));
+                dropdown.add(new Option("Pronto"));
+                dropdown.add(new Option("Autorizado"));
+                dropdown.add(new Option("Em Voo"));
+            }
+            else{
+                dropdown.add(new Option("Em Voo"));
+                dropdown.add(new Option("Aterrissado"));
+                dropdown.add(new Option("Desembarcando"));
+            }
             var code = sessionStorage.getItem("code_status_flight").split('|')[0];
             document.getElementById("id_code_flight").value = code;
             var status = sessionStorage.getItem("code_status_flight").split('|')[1];
@@ -45,11 +63,15 @@
 <body onload="catchCodeFlight()">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand mr-0 mr-md-2" href="../home" aria-label="Caqui">
+            <img src="{% static 'img/caqui.png' %}" width="50 px">
+        </a> 
         <a class="navbar-brand" href="../update">Update</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <a href="/" class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3">Exit</a>
+      </div>
     </nav>
     <h1> ATUALIZAÇÃO DO STATUS DE VOO </h1>
 
