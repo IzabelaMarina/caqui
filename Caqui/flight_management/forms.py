@@ -31,11 +31,13 @@ class CreateFlightForm(forms.Form):
             required=True)
     dt_est_departure = forms.DateTimeField(
             label='Data de Partida Estimada', 
-            widget=DateInput)
+            widget=DateInput,
+            required=True)
 
     dt_est_arrival = forms.DateTimeField(
             label='Data de Chegada Estimada', 
-            widget=DateInput)
+            widget=DateInput,
+            required=True)
     nm_origin = forms.ChoiceField(label='Origem',choices=AirportCodes.choices, required=True)
     nm_destination = forms.ChoiceField(label='Destino',choices=AirportCodes.choices, required=True)
 
