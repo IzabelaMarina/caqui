@@ -46,6 +46,8 @@
                             <td>{{company.1}}</td>
                             <td</td>
                         </tr>
+                        {% empty %}
+                        <li>Sem voos nesse período.</li>
                     {% endfor %}
                     </tbody>
                 </table>
@@ -82,6 +84,8 @@
                                 <td</td>
                             </tr>
                         {% endif %}
+                        {% empty %}
+                        <li>Sem voos nesse período.</li>
                     {% endfor %}
                     </tbody>
                 </table>
@@ -116,6 +120,8 @@
                             <td</td>
                         </tr>
                         {% endif %}
+                        {% empty %}
+                        <li>Sem voos nesse período.</li>
                     {% endfor %}
                     </tbody>
                 </table>
