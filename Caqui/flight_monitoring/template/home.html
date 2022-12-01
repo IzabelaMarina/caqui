@@ -95,7 +95,7 @@
                         <td>{{flight.tx_code}}</td>
                         <td>{{flight.nm_destination}}</td>
                         <td>{{flight.fk_flightstatus.nm_status}}</td>
-                        <td>{{flight.fk_flightstatus__dt_departure}}</td>
+                        <td>{{flight.fk_flightstatus.dt_departure}}</td>
                         <td</td>
                     </tr>
                     {% endif %}
@@ -130,7 +130,7 @@
                           <td>{{flight.tx_code}}</td>
                           <td>{{flight.nm_origin}}</td>
                           <td>{{flight.fk_flightstatus.nm_status}}</td>
-                          <td>{{flight.fk_flightstatus__dt_arrival}}</td>
+                          <td>{{flight.fk_flightstatus.dt_arrival}}</td>
                       </tr>
                     {% endif %}
                   {% endfor %}

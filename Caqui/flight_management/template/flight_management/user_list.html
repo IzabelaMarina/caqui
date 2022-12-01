@@ -8,11 +8,9 @@
   <ul>
 
   {% for user in user_list %}
-    <li>
-      <a href="{% url 'user-detail' user.id %}">
-      {{ user.id }} - {{ user.tx_name }}
+      <a class="btn btn-secondary" href="{% url 'user-detail' user.id %}">
+       {{ user.tx_name }}
       </a>
-    </li>
   {% endfor %}
 
  </ul>
