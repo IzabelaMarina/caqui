@@ -56,6 +56,8 @@
                                 <td</td>
                             </tr>
                         {% endif %}
+                        {% empty %}
+                            <li>Sem voos de partida nesse período.</li>
                     {% endfor %}
                     </tbody>
                 </table>
@@ -90,6 +92,8 @@
                             <td</td>
                         </tr>
                         {% endif %}
+                        {% empty %}
+                            <li>Sem voos de chegada nesse período.</li>
                     {% endfor %}
                     </tbody>
                 </table>

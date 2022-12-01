@@ -15,31 +15,30 @@ class ReportView(TemplateView):
     def get(self,request):
         request.session.clear()
         formDates = forms.FormDates()
-        formCode = forms.FormCode()
-        return render(request, "report.html", {'formDates': formDates, 'formCode': formCode})
+        return render(request, "report.html", {'formDates': formDates})
 
-    def post(self,request):
+    def reportview(request):
 
-        formDates = forms.FormDates(request.POST)
-        if formDates.is_valid():
-            request.session['minDate'] = str(formDates.cleaned_data['min_date'])
-            request.session['maxDate'] = str(formDates.cleaned_data['max_date'])
-        if 'cmpny_report' in request.POST:
-            request.session['cmpny_report'] = True
-        else:
-            request.session['cmpny_report'] = False
-        if 'date_report' in request.POST:
+        if(request.method == 'POST'):
             formDates = forms.FormDates(request.POST)
             if formDates.is_valid():
                 request.session['minDate'] = str(formDates.cleaned_data['min_date'])
                 request.session['maxDate'] = str(formDates.cleaned_data['max_date'])
-        elif 'code_report' in request.POST:
-            formCode = forms.FormCode(request.POST)
-            if formCode.is_valid():
-                request.session['flight_code'] = formCode.cleaned_data['flight_code']
-        formDates = forms.FormDates()
-        formCode = forms.FormCode()
-        return redirect('/report/flightreport')
+                if 'cmpny_report' in request.POST:
+                    request.session['cmpny_report'] = True
+                else:
+                    request.session['cmpny_report'] = False
+                return redirect('/report/flightreport')
+        else:
+            request.session.clear()
+            formDates = forms.FormDates()
+        return render(request, "report.html", {'formDates': formDates})
+        #if 'date_report' in request.POST:
+        #    formDates = forms.FormDates(request.POST)
+        #    if formDates.is_valid():
+        #        request.session['minDate'] = str(formDates.cleaned_data['min_date'])
+        #        request.session['maxDate'] = str(formDates.cleaned_data['max_date'])
+        #formDates = forms.FormDates()
 
 def reportflightview(request):
     cmpnyData = False
