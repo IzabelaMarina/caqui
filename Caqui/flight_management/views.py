@@ -51,7 +51,7 @@ class FlightDetailView(generic.DetailView):
 
 def create_flight(request):
     flight_status = FlightStatus()
-    flight_status.save()
+    # flight_status.save()
     
     flight = Flight(fk_flightstatus=flight_status)
 
