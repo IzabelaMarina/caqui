@@ -2,22 +2,20 @@
 
 {% block content %}
 
-<h1>Flight List</h1>
+<h1>Lista de Voos</h1>
 
 {% if flight_list %}
   <ul>
 
   {% for flight in flight_list %}
-    <li>
-      <a href="{% url 'flight-detail' flight.id %}">
-      {{ flight.id }} - {{ flight.tx_code }}
+      <a class="btn btn-secondary" href="{% url 'flight-detail' flight.id %}">
+      {{ flight.tx_code }}
       </a>
-    </li>
   {% endfor %}
 
  </ul>
 {% else %}
-  <p>There are no flights available.</p>
+  <p>Sem voos disponíveis.</p>
 {% endif %}
         
         

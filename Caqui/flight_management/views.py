@@ -10,7 +10,7 @@ from django.urls import reverse
 
 from flight_management import views as flightmanagementviews
 from flight_management.models import User, Flight, FlightStatus
-from flight_management.enums import AirportCodes
+from flight_management.enums import AirportCodes, Status
 from flight_management.forms import CreateFlightForm, FormUpdateStatus, UpdateFlightForm
 
 listStatus = ["Previsto", "Cancelado", "Embarcando", "Programado", "Taxiando", "Pronto", "Autorizado", "Em Voo", "Aterrissado", "Desembarcando"]
@@ -71,6 +71,8 @@ def create_flight(request):
 
             flight_status.dt_departure = flight.dt_est_departure
             flight_status.dt_arrival = flight.dt_est_arrival
+            if flight.nm_destination == AirportCodes.GRU:
+                flight_status.nm_status = FlightStatus(nm_status=Status.EM_VOO).nm_status
             flight_status.save()
             flight.save()
 

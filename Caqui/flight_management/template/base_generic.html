@@ -20,12 +20,13 @@
   <div class="col-sm-2">
   {% block sidebar %}
   <ul class="sidebar-nav">
-     <!-- <li><a href="{% url 'index' %}">Home</a></li> -->
-    <li><a href="{% url 'index' %}">Home</a></li>
-    <li><a href="{% url 'user' %}">All users</a></li>
-    <li><a href="{% url 'flight' %}">All flights</a></li>
-    <li><a href="{% url 'flight-create' %}">Create flights</a></li>
-    <li><a href="{% url 'user-create' %}">Create users</a></li>
+    <a href="{% url 'index' %}">
+        <img src="{% static 'img/caqui.png' %}" width="50 px">
+    </a>
+    <a class="btn btn-secondary" href="{% url 'user' %}">Usuários</a>
+    <a class="btn btn-secondary" href="{% url 'flight' %}">Voos</a>
+    <a class="btn btn-secondary" href="{% url 'flight-create' %}">Criar Voos</a>
+    <a class="btn btn-secondary" href="{% url 'user-create' %}">Criar Usuários</a>
   </ul>
  
 {% endblock %}
