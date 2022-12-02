@@ -143,32 +143,33 @@ def update_status(request):
         except Flight.DoesNotExist:
             flight = None
         else:
-            flightstatus = flight.fk_flightstatus
-            dif_index = listStatus.index(request.POST['select_status']) - listStatus.index(flightstatus.nm_status)
-            if (dif_index == 1 or dif_index == 0):
-                if request.POST['select_status'] != "":
-                    flightstatus.nm_status = request.POST['select_status']
-                if request.POST['date_departure'] != "":
-                    flightstatus.dt_departure = request.POST['date_departure']
-                if request.POST['date_arrival'] != "":
-                    flightstatus.dt_arrival = request.POST['date_arrival']
-                flightstatus.save()
-                return redirect(reverse(flightmanagementviews.flightupdateview))
+            if form.is_valid():
+                flightstatus = flight.fk_flightstatus
+                dif_index = listStatus.index(request.POST['select_status']) - listStatus.index(flightstatus.nm_status)
+                if (dif_index == 1 or dif_index == 0):
+                    if request.POST['select_status'] != "":
+                        flightstatus.nm_status = request.POST['select_status']
+                    if request.POST['date_departure'] != "":
+                        flightstatus.dt_departure = request.POST['date_departure']
+                    if request.POST['date_arrival'] != "":
+                        flightstatus.dt_arrival = request.POST['date_arrival']
+                    flightstatus.save()
+                    return redirect(reverse(flightmanagementviews.flightupdateview))
 
-            elif (listStatus.index(flightstatus.nm_status) == 0 and listStatus.index(request.POST['select_status']) == 2):
-                if request.POST['select_status'] != "":
-                    flightstatus.nm_status = request.POST['select_status']
-                if request.POST['date_departure'] != "":
-                    flightstatus.dt_departure = request.POST['date_departure']
-                if request.POST['date_arrival'] != "":
-                    flightstatus.dt_arrival = request.POST['date_arrival']
-                flightstatus.save()
-                return redirect(reverse(flightmanagementviews.flightupdateview))
-            
-            else:
-                form = FormUpdateStatus()
-                context = {'form': form}
-                return render(request, 'edit_not_possible.html', context)
+                elif (listStatus.index(flightstatus.nm_status) == 0 and listStatus.index(request.POST['select_status']) == 2):
+                    if request.POST['select_status'] != "":
+                        flightstatus.nm_status = request.POST['select_status']
+                    if request.POST['date_departure'] != "":
+                        flightstatus.dt_departure = request.POST['date_departure']
+                    if request.POST['date_arrival'] != "":
+                        flightstatus.dt_arrival = request.POST['date_arrival']
+                    flightstatus.save()
+                    return redirect(reverse(flightmanagementviews.flightupdateview))
+                
+                else:
+                    form = FormUpdateStatus()
+                    context = {'form': form}
+                    return render(request, 'edit_not_possible.html', context)
     else:
         form = FormUpdateStatus()
     

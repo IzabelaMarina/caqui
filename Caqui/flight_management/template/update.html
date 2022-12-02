@@ -17,13 +17,17 @@
         div {text-align: center;}
     </style>
     <script>
+        function deleteIcon(){
+            var icon = document.querySelector(`[id*="Cancelado"]`);
+            icon.style.display="none";   
+        }
         function passCode(code_status){
             sessionStorage.setItem("code_status_flight", code_status);
         }
     </script>
 </head>
 
-<body>
+<body onload="deleteIcon()">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand mr-0 mr-md-2" href="../home" aria-label="Caqui">
@@ -37,10 +41,10 @@
       </div>
     </nav>
 
-    <h1> ATUALIZAÇÃO DO STATUS DE VOO </h1>
+    <h1> <i> ATUALIZAÇÃO DO STATUS DE VOO</i> </h1>
     <div class="row">
         <div class="col-md-12">
-            <h2 class="text-center">VOOS</h2>
+            <h2 class="text-center"><i>VOOS</i></h2>
             <table class="table">
                 <thead>
                     <tr>

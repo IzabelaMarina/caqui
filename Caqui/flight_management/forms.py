@@ -5,11 +5,41 @@ class DateInput(forms.DateTimeInput):
     input_type = 'datetime-local'
 
 class FormUpdateStatus(forms.Form):
+    code_flight = forms.CharField(label='Código', max_length=8, required=False, widget=forms.TextInput(attrs={'style': 'width: 150px; background-color: grey;','class': 'form-control'}))
+    date_departure = forms.DateTimeField(label='Data de partida', widget=DateInput(attrs={'style': 'width: 150px; background-color: grey;','class': 'form-control'}), required=False)
+    date_arrival = forms.DateTimeField(label='Data de chegada', widget=DateInput(attrs={'style': 'width: 150px; background-color: grey;','class': 'form-control'}), required=False)
+    select_status = forms.ChoiceField(label='Status', choices=Status.choices, required=False, widget=forms.Select(attrs={'style': 'width: 150px; background-color: grey;','class': 'form-control'}))
 
-    code_flight = forms.CharField(label='Código', max_length=8, required=False)
-    date_departure = forms.DateTimeField(label='Data de partida', widget=DateInput, required=False)
-    date_arrival = forms.DateTimeField(label='Data de chegada', widget=DateInput, required=False)
-    select_status = forms.ChoiceField(label='Status', choices=Status.choices, required=False)
+    def clean_date_departure(self):
+
+        
+
+        data = self.cleaned_data['date_departure']
+
+        if (data != None):
+            data = data.replace(tzinfo=utc)
+
+            # Check date is not in past.
+            if data != "" and data < utc.localize(datetime.datetime.now()):
+                raise ValidationError(_('Data inválida - voo no passado!'))
+
+        # Remember to always return the cleaned data.
+        return data
+
+    def clean_date_arrival(self):
+
+        data = self.cleaned_data['date_arrival']
+
+        if (data != None):
+        
+            data = data.replace(tzinfo=utc)
+
+            # Check date is not in past.
+            if data < utc.localize(datetime.datetime.now()):
+                raise ValidationError(_('Data inválida - voo no passado!'))
+        
+        # Remember to always return the cleaned data.
+        return data
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _

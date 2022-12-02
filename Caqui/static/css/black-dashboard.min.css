@@ -50,7 +50,8 @@
     }
 
     dl, ol, ul {
-        margin-top:0; margin-bottom:1rem
+        margin-top:0;
+        margin-bottom:1rem
     }
 
     ol ol, ol ul, ul ol, ul ul {
@@ -1898,7 +1899,21 @@
     }
 
     .btn {
-        display:inline-block; font-weight:600; color:#525f7f; text-align:center; vertical-align:middle; -webkit-user-select:none; user-select:none; background-color:transparent; border:1px solid transparent; padding:11px 40px; font-size:.875rem; line-height:1.35em; border-radius:.25rem; transition:color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+        width:  150px;
+        display:inline-block;
+        font-weight:600;
+        color:#525f7f;
+        text-align:center;
+        vertical-align:middle;
+        -webkit-user-select:none;
+        user-select:none;
+        background-color:transparent;
+        border:1px solid transparent;
+        padding:11px 40px;
+        font-size:.875rem;
+        line-height:1.35em;
+        border-radius:.25rem;
+        transition:color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
     }
 
     @media (prefers-reduced-motion:reduce) {
@@ -9802,7 +9817,7 @@
     }
 
     .btn, .navbar .navbar-nav>a.btn {
-        border-width:2px; border:none; position:relative; overflow:hidden; margin:4px 1px; border-radius:.4285rem; cursor:pointer; background:#344675; background-image:linear-gradient(to bottom left, #344675, #263148, #344675); background-size:210% 210%; background-position:top right; background-color:#344675; transition:all .15s ease; box-shadow:none; color:#fff
+        width: 150px; border-width:2px; border:none; position:relative; overflow:hidden; margin:15px 15px; border-radius:.4285rem; cursor:pointer; background:#344675; background-image:linear-gradient(to bottom left, #344675, #263148, #344675); background-size:210% 210%; background-position:top right; background-color:#344675; transition:all .15s ease; box-shadow:none; color:#fff
     }
 
     .btn.animation-on-hover:hover, .navbar .navbar-nav>a.btn.animation-on-hover:hover {
@@ -14269,3 +14284,14 @@ Copyright (c) 2015 Daniel Eden
         right: 50%;
         transform: translate(-50%,-50%);
       }
+
+    .gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }

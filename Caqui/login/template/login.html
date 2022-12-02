@@ -17,7 +17,7 @@
             margin-top: 10px;
         }
         .inputEnviar{
-            margin-top: 10px;
+            margin-top: 100px;
         }
         .spaceAlert{
             margin-top: 20px;
@@ -58,46 +58,25 @@
             <img src="{% static 'img/caqui_logo.png' %}" class="center">
             <div>
                 <h2>Seja bem-vindo ao Caqui! Por favor, faça seu login.</h2>
-                <h3 class="login">Logins de Teste</h3>
 
-                <table class="table tablesorter " id="" value="oi">
-                    <thead class=" text-primary">
-                      <tr class="text-center">
-                        <th>Login</th>
-                        <th>Senha</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="text-center">
-                            <td>piloto</td>
-                            <td>piloto</td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>operador</td>
-                            <td>operador</td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>controlador</td>
-                            <td>controlador</td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>gerente</td>
-                            <td>gerente</td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>companhia</td>
-                            <td>companhia</td>
-                        </tr>
-                    </tbody>
-                  </table>
-
-                <form class="styleform" method=POST action="" id="form-id">
-                    {% csrf_token %}
-                    {{ form }}
-                    <input class="inputEnviar" type="submit" value="Enviar">
-                </form>
-                <p class="spaceAlert" >Cuidado, se houver 3 tentativas incorretas, você será bloqueado 😔</p>
-            </div>
+                      <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                            <div class="card-body p-5 text-center">
+                              <div class="mb-md-5 mt-md-4 pb-5">
+                                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                                <form class="styleform" method=POST action="" id="form-id">
+                                    {% csrf_token %}
+                                    {{ form }}
+                                    <input class="btn btn-outline-light" type="submit" value="Enviar">
+                                </form>
+                                <p class="spaceAlert" >Cuidado, se houver 3 tentativas incorretas, você será bloqueado 😔</p>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>                 
+             </div>
         </div>
     </div>
 </body>
