@@ -13,16 +13,6 @@ Existem duas tabelas (Flights, FlightStatus) no banco de dados do sistema que po
 
 A tabela de voos mantém informações estáticas dos voos e a tabela de status contém as informações que são atualizadas constantemente durante o processo de partida-chegada de um voo, além de metadata.
 
-Diagrama de Entidade e Relacionamento do Banco de Dados:
-
-![UML](LabEngSoftClassDiag.drawio.png)
-
-As telas de login, home (monitoração de voos), consulta à tabela de voos, atualização de status e relatórios já existem e estão devidamente linkadas. As telas não necessariamente estão cumprindo seu papel no sistema até o momento.
-
-Modelo de Navegação do site:
-
-![UML](InterfacesLabEngSoft.drawio.png)
-
 ## Passos Iniciais
 Para rodar esse projeto no seu computador:
 1.  Inicialize um [ambiente virtual](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment) em Python.
@@ -40,9 +30,4 @@ python3 manage.py test
 ```
 python3 manage.py runserver
 ```
-6. Abra a url ```http://127.0.0.1:8000/admin/``` em um navegador da sua preferência para abrir a tela de admnistração.
-7. Abra a url ```http://127.0.0.1:8000``` para abrir a página inicial (login).
-8. Abra a url ```http://127.0.0.1:8000/home``` para abrir a página de monitoração de voos.
-9. Abra a url ```http://127.0.0.1:8000/report``` para abrir a página de geração de relatórios.
-10. Abra a url ```http://127.0.0.1:8000/flightmanagement/flight/``` para abrir a página de gerenciamento de dados de voo.
-11. Abra a url ```http://127.0.0.1:8000/update``` para abrir a página de atualização de status.
+6. Para acessar o site hospedado na nuvem, basta entrar no link: ```https://lcramos.pythonanywhere.com/```
