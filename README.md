@@ -30,4 +30,4 @@ python3 manage.py test
 ```
 python3 manage.py runserver
 ```
-6. Para acessar o site hospedado na nuvem, basta entrar no [site do projeto](https://lcramos.pythonanywhere.com)
+6. Para acessar o site hospedado na nuvem, basta entrar no [site do projeto](https://lcramos.pythonanywhere.com).
