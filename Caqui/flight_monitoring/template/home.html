@@ -32,13 +32,19 @@
             document.getElementById("nav_gerente").style.display = "none";
         }
 
-        else{
+        else if (roleSelected == "piloto" || roleSelected == "torre" || roleSelected == "funcionario"){
+          document.getElementById("nav_operador").style.display = "none";
+          document.getElementById("nav_gerente").style.display = "none";
+        }
 
-              if (roleSelected != "admin"){
-                document.getElementById("nav_operador").style.display = "none";
-                document.getElementById("nav_gerente").style.display = "none";
-              }
-          }
+        else if (roleSelected != "admin"){
+
+          document.getElementById("nav_operador").style.display = "none";
+          document.getElementById("nav_gerente").style.display = "none";
+          document.getElementById("nav_piloto_operador_controlador_companhia").style.display = "none";
+
+        }
+
     }  
     </script>
 

@@ -44,6 +44,7 @@ def loginview(request):
                     request.session["load_count"] = 0
                     return render(request, 'error.html')
     else:
+        role = None
         form = FormLoginUser()
     
     context = {'form': form}
