@@ -11,7 +11,17 @@ Essa aplicação implementa um sistema de monitoramento de voos, com controle de
 
 Existem duas tabelas (Flights, FlightStatus) no banco de dados do sistema que podem ser testadas utilizando os testes automatizados do projeto.
 
-A tabela de voos mantém informações estáticas dos voos e a tabela de status contém as informações que são atualizadas constantemente durante o processo de partida-chegada de um voo, além de metadata.
+A tabela de voos mantém informações estáticas dos voos e a tabela de status contém as informações que são atualizadas constantemente durante o processo de partida-chegada de um voo.
+
+A relação dessas entidades é tal que:
+
+![alt text](Documentação/diagrama_entidade_relacionamento.png)
+
+É possível se guiar no acesso ao site utilizando o seguinte diagrama:
+
+![alt text](Documentação/diagrama_navegacao.png)
+
+A documentação restante para compreensão do projeto pode ser encontrada na seção de [Documentação](/Documentação) desse repositório.
 
 ## Passos Iniciais
 Para rodar esse projeto no seu computador:
